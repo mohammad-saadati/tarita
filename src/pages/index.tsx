@@ -12,7 +12,16 @@ const Home: NextPageWithLayout = () => {
   );
 };
 
-Home.getLayout = (page: ReactElement) =>
-  identifier(page, LayoutTypes.dashboard);
+Home.getLayout = (page: ReactElement) => identifier(page, LayoutTypes.default);
 
+export async function getServerSideProps() {
+  try {
+    const res = await axios.get("/home");
+    const { data } = res;
+    console.log("****", data);
+    return { props: { data } };
+  } catch (error) {}
+
+  return { props: { data: {} } };
+}
 export default Home;
