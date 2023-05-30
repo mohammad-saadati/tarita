@@ -3,11 +3,17 @@ import { NextPageWithLayout } from "./_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 //
 import HomeSlider from "@/components/HomeSlider";
+//
+import axios from "@/utils/axios";
 
-const Home: NextPageWithLayout = () => {
+interface HomeProps {
+  data?: { banner: []; smallImg: {} }; // Replace 'any' with the actual type of 'data' if known
+}
+
+const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
   return (
     <div>
-      <HomeSlider />
+      <HomeSlider slides={data.banner} />
     </div>
   );
 };
