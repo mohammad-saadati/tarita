@@ -9,7 +9,7 @@ const Layout = ({ children }: layoutProps) => {
     <>
       <div>
         <div></div>
-        {children}
+        <div class="container">{children}</div>
       </div>
     </>
   );
