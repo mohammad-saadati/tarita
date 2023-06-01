@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactElement } from "react";
 import { NextPageWithLayout } from "./_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
@@ -12,8 +13,13 @@ interface HomeProps {
 
 const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
   return (
-    <div>
-      <HomeSlider slides={data.banner} />
+    <div className="grid grid-cols-12 gap-4">
+      <div className="col-span-2 relative">
+        <Image src={data.smallImg.url} fill={true} alt="" />
+      </div>
+      <div className="col-span-10 relative">
+        <HomeSlider slides={data.banner} />
+      </div>
     </div>
   );
 };
