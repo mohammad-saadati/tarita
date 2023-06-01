@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.skeleton-placeholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
+  animation: skeleton-animation 1.2s ease-in-out infinite;
+}
+
+@keyframes skeleton-animation {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
