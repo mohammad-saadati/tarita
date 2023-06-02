@@ -8,6 +8,8 @@ import { Navigation, Pagination } from "swiper";
 
 // import Swiper styles
 import "swiper/css";
+import "swiper/css/virtual";
+import "./navigation.css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
@@ -19,6 +21,21 @@ const HomeSlider = ({ slides }) => {
     console.log("test");
     setloadedImageNumber((prev) => prev + 1);
   };
+  const renderPagination = (swiper, slideIndex) => {
+    return (
+      <div className="custom-pagination">
+        {slides.map((slide, index) => (
+          <span
+            key={index}
+            className={`pagination-item ${
+              index === slideIndex ? "active" : ""
+            }`}
+            onClick={() => swiper.slideTo(index)}
+          />
+        ))}
+      </div>
+    );
+  };
 
   useEffect(() => {
     if (loadedImageNumber == slides.length) setLoading(false);
@@ -27,14 +44,19 @@ const HomeSlider = ({ slides }) => {
   return (
     <div>
       <Swiper
+        className="relative"
         modules={[Navigation, Pagination]}
-        pagination
-        navigation
+        pagination={{
+          type: "bullets",
+          clickable: true,
+        }}
+        navigation={{ nextEl: ".swiper-next", prevEl: ".swiper-prev" }}
         spaceBetween={0}
         slidesPerView={1}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
         placeholder="blur"
+        loop={true}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -49,6 +71,17 @@ const HomeSlider = ({ slides }) => {
             </div>
           </SwiperSlide>
         ))}
+        <div className="swiper-prev" />
+        <div className="swiper-next" />
+
+        {/* <div className="custom-pagination">
+          {Array.from({ length: slides.length }, (_, index) => (
+            <div
+              className="swiper-pagination"
+              style={{ left: `${index * 150}px` }}
+            ></div>
+          ))}
+        </div> */}
       </Swiper>
     </div>
   );
