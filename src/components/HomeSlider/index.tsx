@@ -53,6 +53,18 @@ const HomeSlider = ({ slides }) => {
                 className={`object-cover rounded-[10px]`}
                 onLoad={loadedHandler}
               />
+              <div className="absolute right-0 bg-black bg-opacity-50 w-1/3 h-full rounded-tr-[10px] rounded-br-[10px] text-white">
+                <div className="p-12 px-20">
+                  <div className="text-3xl mb-5">عنوان اول</div>
+                  <div className="text-xl mb-10">توضیحات عنوان</div>
+                  <a
+                    className="bg-rose-900 text-center rounded p-3 w-[10rem] cursor-pointer"
+                    href="#"
+                  >
+                    دانلود اپلیکیشن
+                  </a>
+                </div>
+              </div>
             </div>
           </SwiperSlide>
         ))}
