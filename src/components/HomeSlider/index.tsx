@@ -21,21 +21,6 @@ const HomeSlider = ({ slides }) => {
     console.log("test");
     setloadedImageNumber((prev) => prev + 1);
   };
-  const renderPagination = (swiper, slideIndex) => {
-    return (
-      <div className="custom-pagination">
-        {slides.map((slide, index) => (
-          <span
-            key={index}
-            className={`pagination-item ${
-              index === slideIndex ? "active" : ""
-            }`}
-            onClick={() => swiper.slideTo(index)}
-          />
-        ))}
-      </div>
-    );
-  };
 
   useEffect(() => {
     if (loadedImageNumber == slides.length) setLoading(false);
@@ -71,8 +56,12 @@ const HomeSlider = ({ slides }) => {
             </div>
           </SwiperSlide>
         ))}
-        <div className="swiper-prev" />
-        <div className="swiper-next" />
+        <div className="swiper-prev">
+          <i className="icon-left-arrow"></i>
+        </div>
+        <div className="swiper-next">
+          <i className="icon-right-arrow"></i>
+        </div>
 
         {/* <div className="custom-pagination">
           {Array.from({ length: slides.length }, (_, index) => (
