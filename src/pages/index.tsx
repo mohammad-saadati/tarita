@@ -14,7 +14,7 @@ interface HomeProps {
 const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
   return (
     <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-2 relative">
+      <div className="col-span-2 relative cursor-pointer">
         <Image src={data.smallImg.url} fill={true} alt="" />
       </div>
       <div className="col-span-10 relative">
