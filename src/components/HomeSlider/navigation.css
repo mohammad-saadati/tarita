@@ -64,6 +64,7 @@
   width: 10px!important;
   height: 10px!important;
   background: #7A503E!important;
+  opacity: 0.8!important;
 }
 .swiper-pagination-bullet-active::before {
   content: ""!important;
