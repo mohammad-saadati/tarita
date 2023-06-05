@@ -16,6 +16,10 @@ module.exports = {
           lg: "1024px", // Set a custom max-width for the 'lg' breakpoint
           xl: "1300px",
         },
+        padding: {
+          DEFAULT: "1rem",
+          sm: "0",
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
