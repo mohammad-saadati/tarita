@@ -6,10 +6,11 @@ import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import Slider from "@/components/Slider";
 //
 import axios from "@/utils/axios";
+//
 import { SwiperSlide } from "swiper/react";
 
 interface HomeProps {
-  data?: { banner: []; smallImg: {} }; // Replace 'any' with the actual type of 'data' if known
+  data: { banner: []; smallImg: { url: string; "mobile-url": string } }; // Replace 'any' with the actual type of 'data' if known
 }
 
 const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
@@ -43,11 +44,24 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
 
   return (
     <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-2 relative cursor-pointer">
-        <Image src={data.smallImg.url} fill={true} alt="" />
+      <div className="col-span-12 md:col-span-9 lg:col-span-10 relative">
+        <Slider slides={data.banner} renderSlides={renderBannerSlides} />
       </div>
-      <div className="col-span-10 relative">
-        <HomeSlider slides={data.banner} />
+      <div className="col-span-12 md:col-span-3 lg:col-span-2 relative h-[300px]">
+        <Image
+          priority={true}
+          src={data.smallImg.url}
+          fill={true}
+          alt=""
+          className="hidden md:block rounded-[10px]"
+        />
+        <Image
+          priority={true}
+          src={data.smallImg["mobile-url"]}
+          fill={true}
+          alt=""
+          className="block md:hidden rounded-[10px]"
+        />
       </div>
     </div>
   );
