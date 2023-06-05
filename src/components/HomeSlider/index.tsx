@@ -36,7 +36,7 @@ const HomeSlider = ({ slides }) => {
           clickable: true,
         }}
         navigation={{ nextEl: ".swiper-next", prevEl: ".swiper-prev" }}
-        spaceBetween={0}
+        spaceBetween={2}
         slidesPerView={1}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
@@ -45,7 +45,7 @@ const HomeSlider = ({ slides }) => {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[300px] w-[1078px]">
+            <div className="relative h-[300px] rounded-[10px]">
               <Image
                 src={slide.url}
                 fill={true}
@@ -53,8 +53,8 @@ const HomeSlider = ({ slides }) => {
                 className={`object-cover rounded-[10px]`}
                 onLoad={loadedHandler}
               />
-              <div className="absolute right-0 bg-black bg-opacity-50 w-1/3 h-full rounded-tr-[10px] rounded-br-[10px] text-white">
-                <div className="p-12 px-20">
+              <div className="absolute right-0 bg-black bg-opacity-50 w-full md:w-1/2 lg:w-1/3 h-full rounded-[10px] md:rounded-tl-[0] md:rounded-bl-[0] text-white">
+                <div className="p-12 px-16">
                   <div className="text-3xl mb-5">عنوان اول</div>
                   <div className="text-xl mb-10">توضیحات عنوان</div>
                   <a
