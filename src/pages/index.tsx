@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactElement } from "react";
 import { NextPageWithLayout } from "./_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
@@ -14,7 +15,7 @@ interface HomeProps {
     banner: [];
     smallImg: { url: string; "mobile-url": string };
     categories: [];
-  }; // Replace 'any' with the actual type of 'data' if known
+  };
 }
 
 const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
@@ -45,23 +46,6 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       </SwiperSlide>
     );
   };
-  // const renderCategories = (
-  //   slide: { title: string; url: string },
-  //   index: number
-  // ) => {
-  //   return (
-  // <SwiperSlide key={index}>
-  //   <div className="text-center">
-  //     <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
-  //       <div className="relative h-[40px] w-[40px]">
-  //         <Image src={slide.url} fill={true} alt={slide.title} />
-  //       </div>
-  //     </div>
-  //     <div>{slide.title}</div>
-  //   </div>
-  // </SwiperSlide>;
-  //   );
-  // };
 
   return (
     <>
@@ -97,6 +81,15 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             <div className="text-[14px] md:text-[16px]">{slide.title}</div>
           </div>
         ))}
+      </div>
+      <div>
+        <div className="flex justify-between">
+          <div className="font-bold">محصولات پرطرفدار</div>
+          <Link href="#" className="text-[12px]">
+            مشاهده همه محصولات
+          </Link>
+        </div>
+        
       </div>
     </>
   );
