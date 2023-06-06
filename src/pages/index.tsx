@@ -45,44 +45,60 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       </SwiperSlide>
     );
   };
-  const renderCategories = (
-    slide: { title: string; url: string },
-    index: number
-  ) => {
-    return (
-      <SwiperSlide key={index}>
-        <div className="relative h-[40px]">
-          <Image src={slide.url} fill={true} alt={slide.title} />
-        </div>
-      </SwiperSlide>
-    );
-  };
+  // const renderCategories = (
+  //   slide: { title: string; url: string },
+  //   index: number
+  // ) => {
+  //   return (
+  // <SwiperSlide key={index}>
+  //   <div className="text-center">
+  //     <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
+  //       <div className="relative h-[40px] w-[40px]">
+  //         <Image src={slide.url} fill={true} alt={slide.title} />
+  //       </div>
+  //     </div>
+  //     <div>{slide.title}</div>
+  //   </div>
+  // </SwiperSlide>;
+  //   );
+  // };
 
   return (
-    <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-12 md:col-span-9 lg:col-span-10 relative">
-        <Slider slides={data.banner} renderSlides={renderBannerSlides} />
+    <>
+      <div className="grid grid-cols-12 gap-4">
+        <div className="col-span-12 md:col-span-9 lg:col-span-10 relative">
+          <Slider slides={data.banner} renderSlides={renderBannerSlides} />
+        </div>
+        <div className="col-span-12 md:col-span-3 lg:col-span-2 relative h-[300px]">
+          <Image
+            priority={true}
+            src={data.smallImg.url}
+            fill={true}
+            alt=""
+            className="hidden md:block rounded-[10px]"
+          />
+          <Image
+            priority={true}
+            src={data.smallImg["mobile-url"]}
+            fill={true}
+            alt=""
+            className="block md:hidden rounded-[10px]"
+          />
+        </div>
       </div>
-      <div className="col-span-12 md:col-span-3 lg:col-span-2 relative h-[300px]">
-        <Image
-          priority={true}
-          src={data.smallImg.url}
-          fill={true}
-          alt=""
-          className="hidden md:block rounded-[10px]"
-        />
-        <Image
-          priority={true}
-          src={data.smallImg["mobile-url"]}
-          fill={true}
-          alt=""
-          className="block md:hidden rounded-[10px]"
-        />
+      <div className="flex justify-center my-[70px] overflow-x-auto overflow-y-hidden">
+        {data.categories.map((slide, index) => (
+          <div className="text-center mx-3 md:mx-6 cursor-pointer" key={index}>
+            <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
+              <div className="relative h-[40px] w-[40px]">
+                <Image src={slide.url} fill={true} alt={slide.title} />
+              </div>
+            </div>
+            <div className="text-[14px] md:text-[16px]">{slide.title}</div>
+          </div>
+        ))}
       </div>
-      <div className="col-span-12 h-[40px]">
-        <Slider slides={data.categories} renderSlides={renderCategories} />
-      </div>
-    </div>
+    </>
   );
 };
 
