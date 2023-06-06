@@ -10,7 +10,11 @@ import axios from "@/utils/axios";
 import { SwiperSlide } from "swiper/react";
 
 interface HomeProps {
-  data: { banner: []; smallImg: { url: string; "mobile-url": string } }; // Replace 'any' with the actual type of 'data' if known
+  data: {
+    banner: [];
+    smallImg: { url: string; "mobile-url": string };
+    categories: [];
+  }; // Replace 'any' with the actual type of 'data' if known
 }
 
 const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
@@ -41,6 +45,18 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       </SwiperSlide>
     );
   };
+  const renderCategories = (
+    slide: { title: string; url: string },
+    index: number
+  ) => {
+    return (
+      <SwiperSlide key={index}>
+        <div className="relative h-[40px]">
+          <Image src={slide.url} fill={true} alt={slide.title} />
+        </div>
+      </SwiperSlide>
+    );
+  };
 
   return (
     <div className="grid grid-cols-12 gap-4">
@@ -62,6 +78,9 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           alt=""
           className="block md:hidden rounded-[10px]"
         />
+      </div>
+      <div className="col-span-12 h-[40px]">
+        <Slider slides={data.categories} renderSlides={renderCategories} />
       </div>
     </div>
   );
