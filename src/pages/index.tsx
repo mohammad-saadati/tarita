@@ -5,6 +5,7 @@ import { NextPageWithLayout } from "./_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 //
 import Slider from "@/components/Slider";
+import Card from "@/components/Card";
 //
 import axios from "@/utils/axios";
 //
@@ -15,6 +16,8 @@ interface HomeProps {
     banner: [];
     smallImg: { url: string; "mobile-url": string };
     categories: [];
+    popularProducts: [];
+    festivals: [{ url: string }];
   };
 }
 
@@ -46,7 +49,16 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       </SwiperSlide>
     );
   };
-
+  const renderCards = (
+    slide: { url: string; title: string; price: number; rate: number },
+    index: number
+  ) => {
+    return (
+      <SwiperSlide key={index} className="w-auto">
+        <Card item={slide} />
+      </SwiperSlide>
+    );
+  };
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
@@ -84,12 +96,58 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       </div>
       <div>
         <div className="flex justify-between">
-          <div className="font-bold">محصولات پرطرفدار</div>
+          <div className="font-bold mb-[40px]">محصولات پرطرفدار</div>
           <Link href="#" className="text-[12px]">
             مشاهده همه محصولات
           </Link>
         </div>
-        
+        <Slider
+          slides={data.popularProducts}
+          renderSlides={renderCards}
+          options={{ slidesPerView: 5 }}
+        />
+      </div>
+      <div className="grid grid-cols-3 gutter-4 my-[70px]">
+        <div className="relative h-[190px]">
+          <Image
+            priority={true}
+            src={data.festivals[0].url}
+            fill={true}
+            alt=""
+            className="hidden md:block rounded-[10px]"
+          />
+        </div>
+        <div className="relative h-[190px]">
+          <Image
+            priority={true}
+            src={data.festivals[1].url}
+            fill={true}
+            alt=""
+            className="hidden md:block rounded-[10px]"
+          />
+        </div>
+        <div className="relative h-[190px]">
+          <Image
+            priority={true}
+            src={data.festivals[2].url}
+            fill={true}
+            alt=""
+            className="hidden md:block rounded-[10px]"
+          />
+        </div>
+      </div>
+      <div>
+        <div className="flex justify-between mb-[40px]">
+          <div className="font-bold">جدیدترین محصولات</div>
+          <Link href="#" className="text-[12px]">
+            مشاهده همه محصولات
+          </Link>
+        </div>
+        <Slider
+          slides={data.popularProducts}
+          renderSlides={renderCards}
+          options={{ slidesPerView: 5 }}
+        />
       </div>
     </>
   );
