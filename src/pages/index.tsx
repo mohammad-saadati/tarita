@@ -17,7 +17,7 @@ interface HomeProps {
     smallImg: { url: string; "mobile-url": string };
     categories: [];
     popularProducts: [];
-    festivals: [{ url: string }];
+    festivals: { url: string }[];
   };
 }
 
