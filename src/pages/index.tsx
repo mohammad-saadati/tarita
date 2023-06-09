@@ -83,16 +83,21 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         </div>
       </div>
       <div className="flex justify-center my-[70px] overflow-x-auto overflow-y-hidden">
-        {data.categories.map((slide, index) => (
-          <div className="text-center mx-3 md:mx-6 cursor-pointer" key={index}>
-            <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
-              <div className="relative h-[40px] w-[40px]">
-                <Image src={slide.url} fill={true} alt={slide.title} />
+        {data.categories.map(
+          (slide: { url: string; title: string }, index: number) => (
+            <div
+              className="text-center mx-3 md:mx-6 cursor-pointer"
+              key={index}
+            >
+              <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
+                <div className="relative h-[40px] w-[40px]">
+                  <Image src={slide.url} fill={true} alt={slide.title} />
+                </div>
               </div>
+              <div className="text-[14px] md:text-[16px]">{slide.title}</div>
             </div>
-            <div className="text-[14px] md:text-[16px]">{slide.title}</div>
-          </div>
-        ))}
+          )
+        )}
       </div>
       <div>
         <div className="flex justify-between">
@@ -111,7 +116,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <div className="relative h-[190px]">
           <Image
             priority={true}
-            src={data.festivals[0].url}
+            src={data.festivals[0]?.url}
             fill={true}
             alt=""
             className="hidden md:block rounded-[10px]"
@@ -120,7 +125,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <div className="relative h-[190px]">
           <Image
             priority={true}
-            src={data.festivals[1].url}
+            src={data.festivals[1]?.url}
             fill={true}
             alt=""
             className="hidden md:block rounded-[10px]"
@@ -129,7 +134,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <div className="relative h-[190px]">
           <Image
             priority={true}
-            src={data.festivals[2].url}
+            src={data.festivals[2]?.url}
             fill={true}
             alt=""
             className="hidden md:block rounded-[10px]"
