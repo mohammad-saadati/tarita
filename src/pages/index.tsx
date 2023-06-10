@@ -19,6 +19,7 @@ interface HomeProps {
     popularProducts: [];
     festivals: { url: string }[];
     festivel2: { url: string }[];
+    bigBanner: { url: string };
   };
 }
 
@@ -158,7 +159,6 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       <div className="grid grid-cols-2 gap-4 my-[70px]">
         <div className="relative h-[200px]">
           <Image
-            priority={true}
             src={data.festivel2[0]?.url}
             fill={true}
             alt=""
@@ -167,11 +167,20 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         </div>
         <div className="relative h-[200px]">
           <Image
-            priority={true}
             src={data.festivel2[1]?.url}
             fill={true}
             alt=""
             className="hidden md:block rounded-[10px]"
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-12 gap-4 my-[70px]">
+        <div className="relative h-[200px]">
+          <Image
+            src={data.bigBanner.url}
+            fill={true}
+            alt=""
+            className="rounded-[10px]"
           />
         </div>
       </div>
