@@ -20,6 +20,7 @@ interface HomeProps {
     festivals: { url: string }[];
     festivel2: { url: string }[];
     bigBanner: { url: string };
+    brands: { url: string; title: string }[];
   };
 }
 
@@ -61,6 +62,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       </SwiperSlide>
     );
   };
+
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
@@ -68,6 +70,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           <Slider slides={data.banner} renderSlides={renderBannerSlides} />
         </div>
         <div className="col-span-12 md:col-span-3 lg:col-span-2 relative h-[300px]">
+          {/* {data.smallImg.url} */}
           <Image
             priority={true}
             src={data.smallImg.url}
@@ -89,7 +92,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           (slide: { url: string; title: string }, index: number) => (
             <div
               className="text-center mx-3 md:mx-6 cursor-pointer"
-              key={index}
+              key={slide.title}
             >
               <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
                 <div className="relative h-[40px] w-[40px]">
@@ -174,7 +177,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-4 my-[70px]">
+      <div className="grid grid-cols-1 gap-4 my-[70px]">
         <div className="relative h-[200px]">
           <Image
             src={data.bigBanner.url}
@@ -183,6 +186,13 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             className="rounded-[10px]"
           />
         </div>
+      </div>
+      <div className="flex justify-center my-[70px] overflow-x-auto overflow-y-hidden">
+        {data.brands.map((brand, index) => (
+          <div className="relative" key={index}>
+            <Image src={brand.url} fill={true} alt={brand.title} />
+          </div>
+        ))}
       </div>
     </>
   );
@@ -194,7 +204,7 @@ export async function getServerSideProps() {
   try {
     const res = await axios.get("/home");
     const { data } = res;
-    console.log("****", data);
+    console.log("***ddddd*", data);
     return { props: { data } };
   } catch (error) {}
 
