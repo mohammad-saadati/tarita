@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://fake-api-roan.vercel.app/api/",
+  // https://fake-api-roan.vercel.app/api/
+  baseURL: "http://localhost:3000",
   headers: {},
 });
 
