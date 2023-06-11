@@ -15,12 +15,13 @@ interface HomeProps {
   data: {
     banner: [];
     smallImg: { url: string; "mobile-url": string };
-    categories: [];
+    categories: { title: string; url: string }[];
     popularProducts: [];
     festivals: { url: string }[];
     festivel2: { url: string }[];
     bigBanner: { url: string };
-    brands: { url: string; title: string }[];
+    brands: { title: string; url: string }[];
+    posts: { url: string }[];
   };
 }
 
@@ -70,17 +71,16 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           <Slider slides={data.banner} renderSlides={renderBannerSlides} />
         </div>
         <div className="col-span-12 md:col-span-3 lg:col-span-2 relative h-[300px]">
-          {/* {data.smallImg.url} */}
           <Image
             priority={true}
-            src={data.smallImg.url}
+            src={data.smallImg?.url}
             fill={true}
             alt=""
             className="hidden md:block rounded-[10px]"
           />
           <Image
             priority={true}
-            src={data.smallImg["mobile-url"]}
+            src={data.smallImg ? data.smallImg["mobile-url"] : ""}
             fill={true}
             alt=""
             className="block md:hidden rounded-[10px]"
@@ -88,21 +88,22 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         </div>
       </div>
       <div className="flex justify-center my-[70px] overflow-x-auto overflow-y-hidden">
-        {data.categories.map(
-          (slide: { url: string; title: string }, index: number) => (
-            <div
-              className="text-center mx-3 md:mx-6 cursor-pointer"
-              key={slide.title}
-            >
-              <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
-                <div className="relative h-[40px] w-[40px]">
-                  <Image src={slide.url} fill={true} alt={slide.title} />
+        {data.categories &&
+          data.categories.map(
+            (slide: { url: string; title: string }, index: number) => (
+              <div
+                className="text-center mx-3 md:mx-6 cursor-pointer"
+                key={slide.title}
+              >
+                <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
+                  <div className="relative h-[40px] w-[40px]">
+                    <Image src={slide.url} fill={true} alt={slide.title} />
+                  </div>
                 </div>
+                <div className="text-[14px] md:text-[16px]">{slide.title}</div>
               </div>
-              <div className="text-[14px] md:text-[16px]">{slide.title}</div>
-            </div>
-          )
-        )}
+            )
+          )}
       </div>
       <div>
         <div className="flex justify-between">
@@ -187,12 +188,23 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           />
         </div>
       </div>
-      <div className="flex justify-center my-[70px] overflow-x-auto overflow-y-hidden">
-        {data.brands.map((brand, index) => (
-          <div className="relative" key={index}>
-            <Image src={brand.url} fill={true} alt={brand.title} />
-          </div>
-        ))}
+      <div>
+        <p className="font-bold">محبوب ترین برند ها</p>
+        <div className="flex justify-center mb-[70px] mt-4 overflow-y-hidden overflow-x-auto border border-[#F2F2F2] rounded-[10px] p-8">
+          {data?.brands?.map((brand, index) => (
+            <div className="relative flex flex-col justify-between text-center h-[81px]">
+              <div className="mx-8 over-flow-x" key={index}>
+                <Image
+                  src={brand?.url}
+                  width={brand.width}
+                  height={brand.height}
+                  alt={brand.title}
+                />
+              </div>
+              <div className="text-sm mt-2">{brand.title}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
@@ -206,7 +218,9 @@ export async function getServerSideProps() {
     const { data } = res;
     console.log("***ddddd*", data);
     return { props: { data } };
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 
   return { props: { data: {} } };
 }
