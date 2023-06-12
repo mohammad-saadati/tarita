@@ -21,7 +21,7 @@ interface HomeProps {
     festivel2: { url: string }[];
     bigBanner: { url: string };
     brands: { title: string; url: string }[];
-    posts: { url: string }[];
+    posts: { url: string; title: string; description: string }[];
   };
 }
 
@@ -203,6 +203,47 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
               </div>
               <div className="text-sm mt-2 whitespace-nowrap">
                 {brand.title}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div className="flex justify-between items-center mb-[40px]">
+          <p className="font-bold">جدید ترین مطالب</p>
+          <Link href="" className="text-xs">
+            مشاهده همه مطالب
+          </Link>
+        </div>
+        <div className="grid grid-cols-12 gap-4">
+          {data.posts.map((post, index) => (
+            <div
+              className="col-span-12 md:col-span-4 relative border border-[#F2F2F2] rounded-[10px]"
+              key={index}
+            >
+              <div className="relative h-[240px]">
+                <Image
+                  className=""
+                  src={post?.url}
+                  fill={true}
+                  alt={post.title}
+                />
+              </div>
+              <div className="py-3.5 mx-5">
+                <p className="text-sm font-bold">{post.title}</p>
+                <p className="text-xs text-[#828282] mt-4">
+                  {post.description}
+                </p>
+              </div>
+              <div className="flex border-t border-[#F2F2F2] py-3.5 mx-5">
+                <div className="flex items-center text-xs ml-5">
+                  <i className="icon-comment text-sm"></i>
+                  <div className="mr-2">21</div>
+                </div>
+                <div className="flex items-center text-xs">
+                  <i className="icon-liked text-sm"></i>
+                  <div className="mr-2">172</div>
+                </div>
               </div>
             </div>
           ))}
