@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?754i5l');
-  src:  url('fonts/icomoon.eot?754i5l#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?754i5l') format('truetype'),
-    url('fonts/icomoon.woff?754i5l') format('woff'),
-    url('fonts/icomoon.svg?754i5l#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?kzxqnd');
+  src:  url('fonts/icomoon.eot?kzxqnd#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?kzxqnd') format('truetype'),
+    url('fonts/icomoon.woff?kzxqnd') format('woff'),
+    url('fonts/icomoon.svg?kzxqnd#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-liked:before {
+  content: "\e903";
+  color: #da0000;
+}
+.icon-not-liked:before {
+  content: "\e904";
+  color: #4f4f4f;
+}
+.icon-comment:before {
+  content: "\e905";
+  color: #4f4f4f;
+}
 .icon-like:before {
   content: "\e902";
   color: #e0e0e0;
