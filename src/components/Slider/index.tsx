@@ -12,15 +12,23 @@ import "swiper/css/pagination";
 import "./navigation.css";
 
 type SliderProps = {
+  hasPagination?: Boolean;
+  hasNavigation?: Boolean;
   slides: Array<any>; // Update the type of slides as per your data structure
   options?: SwiperOptions;
   renderSlides: (slide: any, index: number) => React.ReactNode; // Update the type of slide as per your data structure
 };
 
-const Slider: React.FC<SliderProps> = ({ slides, renderSlides, options }) => {
+const Slider: React.FC<SliderProps> = ({
+  slides,
+  renderSlides,
+  hasPagination,
+  hasNavigation,
+  options,
+}) => {
   let swiperProps: SwiperOptions = {
     modules: [Navigation, Pagination, Autoplay],
-    pagination: {
+    pagination: hasPagination && {
       type: "bullets",
       clickable: true,
     },
@@ -36,12 +44,16 @@ const Slider: React.FC<SliderProps> = ({ slides, renderSlides, options }) => {
     <div>
       <Swiper {...swiperProps}>
         {slides.map((slide, index) => renderSlides(slide, index))}
-        <div className="swiper-prev">
-          <i className="icon-left-arrow"></i>
-        </div>
-        <div className="swiper-next">
-          <i className="icon-right-arrow"></i>
-        </div>
+        {hasNavigation && (
+          <>
+            <div className="swiper-prev">
+              <i className="icon-left-arrow"></i>
+            </div>
+            <div className="swiper-next">
+              <i className="icon-right-arrow"></i>
+            </div>
+          </>
+        )}
       </Swiper>
     </div>
   );
