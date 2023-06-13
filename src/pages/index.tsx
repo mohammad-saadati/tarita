@@ -68,7 +68,12 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
     <>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-12 md:col-span-9 lg:col-span-10 relative">
-          <Slider slides={data.banner} renderSlides={renderBannerSlides} />
+          <Slider
+            slides={data.banner}
+            renderSlides={renderBannerSlides}
+            hasNavigation={true}
+            hasPagination={true}
+          />
         </div>
         <div className="col-span-12 md:col-span-3 lg:col-span-2 relative h-[300px]">
           <Image
@@ -116,6 +121,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           slides={data.popularProducts}
           renderSlides={renderCards}
           options={{ slidesPerView: 5 }}
+          hasNavigation={true}
         />
       </div>
       <div className="grid grid-cols-3 gap-4 my-[70px]">
@@ -158,6 +164,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           slides={data.popularProducts}
           renderSlides={renderCards}
           options={{ slidesPerView: 5 }}
+          hasNavigation={true}
         />
       </div>
       <div className="grid grid-cols-2 gap-4 my-[70px]">
@@ -199,6 +206,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           slides={data.popularProducts}
           renderSlides={renderCards}
           options={{ slidesPerView: 5 }}
+          hasNavigation={true}
         />
       </div>
       <div className="my-[70px]">
