@@ -83,7 +83,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             src={data.smallImg ? data.smallImg["mobile-url"] : ""}
             fill={true}
             alt=""
-            className="block md:hidden rounded-[10px]"
+            className="block md:hidden rounded-[10px] object-cover"
           />
         </div>
       </div>
@@ -189,6 +189,19 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         </div>
       </div>
       <div>
+        <div className="flex justify-between">
+          <div className="font-bold mb-[40px]">محصولات پرطرفدار</div>
+          <Link href="#" className="text-[12px]">
+            مشاهده همه محصولات
+          </Link>
+        </div>
+        <Slider
+          slides={data.popularProducts}
+          renderSlides={renderCards}
+          options={{ slidesPerView: 5 }}
+        />
+      </div>
+      <div className="my-[70px]">
         <p className="font-bold">محبوب ترین برند ها</p>
         <div className="flex justify-center mb-[70px] mt-4 overflow-y-hidden overflow-x-auto border border-[#F2F2F2] rounded-[10px] p-8">
           {data?.brands?.map((brand, index) => (
