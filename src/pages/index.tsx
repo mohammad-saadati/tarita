@@ -28,7 +28,7 @@ interface HomeProps {
 const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
   const renderBannerSlides = (slide: { url: string }, index: number) => {
     return (
-      <SwiperSlide key={index}>
+      <SwiperSlide key={index * Math.random()}>
         <div className="relative h-[300px] rounded-[10px]">
           <Image
             priority={true}
@@ -58,7 +58,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
     index: number
   ) => {
     return (
-      <SwiperSlide key={index} className="w-auto">
+      <SwiperSlide key={index * Math.random()} className="w-auto">
         <Card item={slide} />
       </SwiperSlide>
     );
@@ -98,7 +98,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             (slide: { url: string; title: string }, index: number) => (
               <div
                 className="text-center mx-3 md:mx-6 cursor-pointer"
-                key={slide.title}
+                key={index * Math.random()}
               >
                 <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
                   <div className="relative h-[40px] w-[40px]">
@@ -214,7 +214,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <div className="flex justify-center mb-[70px] mt-4 overflow-y-hidden overflow-x-auto border border-[#F2F2F2] rounded-[10px] p-8">
           {data?.brands?.map((brand, index) => (
             <div className="relative flex flex-col justify-between items-center text-center mx-8 ">
-              <div className="over-flow-x" key={index}>
+              <div className="over-flow-x" key={index * Math.random()}>
                 <Image
                   src={brand?.url}
                   width={brand.width}
@@ -240,7 +240,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           {data.posts.map((post, index) => (
             <div
               className="col-span-12 md:col-span-4 relative border border-[#F2F2F2] rounded-[10px]"
-              key={index}
+              key={index * Math.random()}
             >
               <div className="relative h-[240px]">
                 <Image
