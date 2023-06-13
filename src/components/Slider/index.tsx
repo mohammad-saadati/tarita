@@ -24,7 +24,7 @@ const Slider: React.FC<SliderProps> = ({ slides, renderSlides, options }) => {
       type: "bullets",
       clickable: true,
     },
-    navigation: { nextEl: ".swiper-next", prevEl: ".swiper-prev" },
+    navigation: { nextEl: ".swiper-prev", prevEl: ".swiper-next" },
     autoplay: { delay: 5000 },
     spaceBetween: 2,
     slidesPerView: 1,
