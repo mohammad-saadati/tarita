@@ -11,23 +11,23 @@ import "../../public/fonts/icomoon/style.css";
 const fonts = localFont({
   src: [
     {
-      path: "../../public/fonts/IranSans/fonts/ttf/IRANSansWeb.ttf",
+      path: "../../public/fonts/IranSans/fonts/ttf/IRANSans(FaNum).ttf",
       weight: "400",
     },
     {
-      path: "../../public/fonts/IranSans/fonts/ttf/IRANSansWeb_UltraLight.ttf",
+      path: "../../public/fonts/IranSans/fonts/ttf/IRANSans(FaNum)_UltraLight.ttf",
       weight: "200",
     },
     {
-      path: "../../public/fonts/IranSans/fonts/ttf/IRANSansWeb_Light.ttf",
+      path: "../../public/fonts/IranSans/fonts/ttf/IRANSans(FaNum)_Light.ttf",
       weight: "300",
     },
     {
-      path: "../../public/fonts/IranSans/fonts/ttf/IRANSansWeb_Medium.ttf",
+      path: "../../public/fonts/IranSans/fonts/ttf/IRANSans(FaNum)_Medium.ttf",
       weight: "500",
     },
     {
-      path: "../../public/fonts/IranSans/fonts/ttf/IRANSansWeb_Bold.ttf",
+      path: "../../public/fonts/IranSans/fonts/ttf/IRANSans(FaNum)_Bold.ttf",
       weight: "700",
     },
   ],
