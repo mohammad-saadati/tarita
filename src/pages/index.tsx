@@ -20,7 +20,7 @@ interface HomeProps {
     festivals: { url: string }[];
     festivel2: { url: string }[];
     bigBanner: { url: string };
-    brands: { title: string; url: string }[];
+    brands: { title: string; url: string; width: number; height: number }[];
     posts: { url: string; title: string; description: string }[];
   };
 }
@@ -35,7 +35,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             src={slide.url}
             fill={true}
             alt=""
-            className={`object-cover rounded-[10px]`}
+            className={`rounded-[10px]`}
           />
           <div className="absolute right-0 bg-black bg-opacity-50 w-full md:w-1/2 lg:w-1/3 h-full rounded-[10px] md:rounded-tl-[0] md:rounded-bl-[0] text-white">
             <div className="p-12 px-16">
@@ -88,7 +88,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             src={data.smallImg ? data.smallImg["mobile-url"] : ""}
             fill={true}
             alt=""
-            className="block md:hidden rounded-[10px] object-cover"
+            className="block md:hidden rounded-[10px]"
           />
         </div>
       </div>
@@ -120,36 +120,44 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <Slider
           slides={data.popularProducts}
           renderSlides={renderCards}
-          options={{ slidesPerView: 5, autoplay: false, spaceBetween: 15 }}
+          options={{
+            slidesPerView: 2,
+            breakpoints: {
+              640: { slidesPerView: 3 },
+              1024: { slidesPerView: 5 },
+            },
+            autoplay: false,
+            spaceBetween: 15,
+          }}
           hasNavigation={true}
         />
       </div>
-      <div className="grid grid-cols-3 gap-4 my-[70px]">
-        <div className="relative h-[190px]">
+      <div className="grid grid-cols-12 gap-4 my-[70px]">
+        <div className="col-span-12 md:col-span-4 relative h-[160px] md:h-[190px]">
           <Image
             priority={true}
             src={data.festivals[0]?.url}
             fill={true}
             alt=""
-            className="hidden md:block rounded-[10px]"
+            className="md:block rounded-[10px]"
           />
         </div>
-        <div className="relative h-[190px]">
+        <div className="col-span-12 md:col-span-4 relative h-[160px] md:h-[190px]">
           <Image
             priority={true}
             src={data.festivals[1]?.url}
             fill={true}
             alt=""
-            className="hidden md:block rounded-[10px]"
+            className="md:block rounded-[10px]"
           />
         </div>
-        <div className="relative h-[190px]">
+        <div className="col-span-12 md:col-span-4 relative h-[160px] md:h-[190px]">
           <Image
             priority={true}
             src={data.festivals[2]?.url}
             fill={true}
             alt=""
-            className="hidden md:block rounded-[10px]"
+            className="md:block rounded-[10px]"
           />
         </div>
       </div>
@@ -163,25 +171,33 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <Slider
           slides={data.popularProducts}
           renderSlides={renderCards}
-          options={{ slidesPerView: 5, autoplay: false, spaceBetween: 15 }}
+          options={{
+            slidesPerView: 2,
+            breakpoints: {
+              640: { slidesPerView: 3 },
+              1024: { slidesPerView: 5 },
+            },
+            autoplay: false,
+            spaceBetween: 15,
+          }}
           hasNavigation={true}
         />
       </div>
-      <div className="grid grid-cols-2 gap-4 my-[70px]">
-        <div className="relative h-[200px]">
+      <div className="grid grid-cols-12 gap-4 my-[70px]">
+        <div className="col-span-12 md:cols-spna-6 relative h-[200px]">
           <Image
             src={data.festivel2[0]?.url}
             fill={true}
             alt=""
-            className="hidden md:block rounded-[10px]"
+            className="md:block rounded-[10px]"
           />
         </div>
-        <div className="relative h-[200px]">
+        <div className="col-span-12 md:cols-spna-6 relative h-[200px]">
           <Image
             src={data.festivel2[1]?.url}
             fill={true}
             alt=""
-            className="hidden md:block rounded-[10px]"
+            className="md:block rounded-[10px]"
           />
         </div>
       </div>
@@ -191,7 +207,13 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             src={data.bigBanner.url}
             fill={true}
             alt=""
-            className="rounded-[10px]"
+            className="hidden md:block rounded-[10px]"
+          />
+          <Image
+            src={data.bigBanner.mobileUrl}
+            fill={true}
+            alt=""
+            className="block md:hidden rounded-[10px]"
           />
         </div>
       </div>
@@ -205,7 +227,15 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <Slider
           slides={data.popularProducts}
           renderSlides={renderCards}
-          options={{ slidesPerView: 5, autoplay: false, spaceBetween: 15 }}
+          options={{
+            slidesPerView: 2,
+            breakpoints: {
+              640: { slidesPerView: 3 },
+              1024: { slidesPerView: 5 },
+            },
+            autoplay: false,
+            spaceBetween: 15,
+          }}
           hasNavigation={true}
         />
       </div>
@@ -239,7 +269,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <div className="grid grid-cols-12 gap-4">
           {data.posts.map((post, index) => (
             <div
-              className="col-span-12 md:col-span-4 relative border border-[#F2F2F2] rounded-[10px]"
+              className="col-span-12 md:co-span-4 relative border border-[#F2F2F2] rounded-[10px]"
               key={index}
             >
               <div className="relative h-[240px]">
