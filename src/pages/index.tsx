@@ -120,7 +120,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <Slider
           slides={data.popularProducts}
           renderSlides={renderCards}
-          options={{ slidesPerView: 5, autoplay: false }}
+          options={{ slidesPerView: 5, autoplay: false, spaceBetween: 15 }}
           hasNavigation={true}
         />
       </div>
@@ -163,7 +163,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <Slider
           slides={data.popularProducts}
           renderSlides={renderCards}
-          options={{ slidesPerView: 5, autoplay: false }}
+          options={{ slidesPerView: 5, autoplay: false, spaceBetween: 15 }}
           hasNavigation={true}
         />
       </div>
@@ -205,7 +205,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <Slider
           slides={data.popularProducts}
           renderSlides={renderCards}
-          options={{ slidesPerView: 5, autoplay: false }}
+          options={{ slidesPerView: 5, autoplay: false, spaceBetween: 15 }}
           hasNavigation={true}
         />
       </div>
