@@ -269,7 +269,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <div className="grid grid-cols-12 gap-4">
           {data.posts.map((post, index) => (
             <div
-              className="col-span-12 md:co-span-4 relative border border-[#F2F2F2] rounded-[10px]"
+              className="col-span-12 md:col-span-4 relative border border-[#F2F2F2] rounded-[10px]"
               key={index}
             >
               <div className="relative h-[240px]">
