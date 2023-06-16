@@ -26,11 +26,14 @@ const Card: FC<CardProps> = ({ item }) => {
       <div className="my-2">
         <Rating
           className="max-w-[65px]"
-          value={rating}
           onChange={setRating}
           value={rating}
           readOnly
-          itemStyles={{ itemShapes: RoundedStar }}
+          itemStyles={{
+            itemShapes: RoundedStar,
+            activeFillColor: "#F2C94C",
+            inactiveFillColor: "#E0E0E0",
+          }}
         />
       </div>
       <div className="flex justify-between items-center">
