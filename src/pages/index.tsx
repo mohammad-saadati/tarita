@@ -19,7 +19,7 @@ interface HomeProps {
     popularProducts: [];
     festivals: { url: string }[];
     festivel2: { url: string }[];
-    bigBanner: { url: string };
+    bigBanner: { url: string; mobileUrl: string };
     brands: { title: string; url: string; width: number; height: number }[];
     posts: { url: string; title: string; description: string }[];
   };
@@ -35,7 +35,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             src={slide.url}
             fill={true}
             alt=""
-            className={`rounded-[10px]`}
+            className="md:object-cover rounded-[10px]"
           />
           <div className="absolute right-0 bg-black bg-opacity-50 w-full md:w-1/2 lg:w-1/3 h-full rounded-[10px] md:rounded-tl-[0] md:rounded-bl-[0] text-white">
             <div className="p-12 px-16">
@@ -184,7 +184,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         />
       </div>
       <div className="grid grid-cols-12 gap-4 my-[70px]">
-        <div className="col-span-12 md:cols-spna-6 relative h-[200px]">
+        <div className="col-span-12 md:col-span-6 relative h-[200px]">
           <Image
             src={data.festivel2[0]?.url}
             fill={true}
@@ -192,7 +192,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             className="md:block rounded-[10px]"
           />
         </div>
-        <div className="col-span-12 md:cols-spna-6 relative h-[200px]">
+        <div className="col-span-12 md:col-span-6 relative h-[200px]">
           <Image
             src={data.festivel2[1]?.url}
             fill={true}
@@ -241,7 +241,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       </div>
       <div className="my-[70px]">
         <p className="font-bold">محبوب ترین برند ها</p>
-        <div className="flex justify-center mb-[70px] mt-4 overflow-y-hidden overflow-x-auto border border-[#F2F2F2] rounded-[10px] p-8">
+        <div className="flex justify-start md:justify-center mb-[70px] mt-4 overflow-y-hidden overflow-x-auto border border-[#F2F2F2] rounded-[10px] p-8">
           {data?.brands?.map((brand, index) => (
             <div className="relative flex flex-col justify-between items-center text-center mx-8 ">
               <div className="over-flow-x" key={index}>

@@ -33,7 +33,7 @@ const Slider: React.FC<SliderProps> = ({
       clickable: true,
     },
     navigation: { nextEl: ".swiper-prev", prevEl: ".swiper-next" },
-    autoplay: { delay: 5000 },
+    autoplay: { delay: 5000, reverseDirection: true },
     spaceBetween: 2,
     slidesPerView: 1,
     loop: true,
