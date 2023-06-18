@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FC, useState } from "react";
 import { commaSeperator } from "@/utils/helpers";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
@@ -22,7 +23,9 @@ const Card: FC<CardProps> = ({ item }) => {
           height={150}
         />
       </div>
-      <div className="mt-[30px] text-[13px] font-medium">{item.title}</div>
+      <div className="mt-[30px] text-[13px] font-medium">
+        <Link href={`/product/10`}>{item.title}</Link>
+      </div>
       <div className="my-2">
         <Rating
           className="max-w-[65px]"
