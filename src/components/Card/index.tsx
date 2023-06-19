@@ -6,7 +6,7 @@ import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
 type CardProps = {
-  item: { url: string; title: string; price: number; rate: number };
+  item: { id: number; url: string; title: string; price: number; rate: number };
 };
 const Card: FC<CardProps> = ({ item }) => {
   const [rating, setRating] = useState(2);
@@ -24,7 +24,7 @@ const Card: FC<CardProps> = ({ item }) => {
         />
       </div>
       <div className="mt-[30px] text-[13px] font-medium">
-        <Link href={`/product/10`}>{item.title}</Link>
+        <Link href={`/product/${item.id}`}>{item.title}</Link>
       </div>
       <div className="my-2">
         <Rating
