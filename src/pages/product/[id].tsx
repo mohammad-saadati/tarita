@@ -16,7 +16,17 @@ interface ProductProps {
 const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
   return (
     <div>
-      <ProductThumbSwiper images={data.mainImages} thumbs={data.thumbnails} />
+      <div className="grid grid-cols-12 gap-4">
+        <div className="col-span-12 md:col-span-6">
+          <ProductThumbSwiper
+            images={data.mainImages}
+            thumbs={data.thumbnails}
+          />
+        </div>
+        <div className="col-span-12 md:col-span-6">
+          <div>test</div>
+        </div>
+      </div>
     </div>
   );
 };
