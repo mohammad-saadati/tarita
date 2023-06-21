@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from "next";
 import { NextPageWithLayout } from "../_app";
+import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import ProductThumbSwiper from "@/components/ProductThumbSwiper";
 import axios from "@/utils/axios";
 
@@ -19,6 +20,9 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
     </div>
   );
 };
+
+Product.getLayout = (page: ReactElement) =>
+  identifier(page, LayoutTypes.default);
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
