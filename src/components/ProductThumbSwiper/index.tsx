@@ -17,9 +17,17 @@ const ProductThumbSwiper: FC<ProductThumbSwiperProps> = ({
 }) => {
   const renderImages = (slide: string, index: number) => {
     return (
-      <div className="relative w-[370px] h-[510px]">
+      <div>
         <SwiperSlide>
-          <Image src={slide} key={index} alt="" width={370} height={510} />
+          <div className="relative w-[370px] h-[510px] mx-auto">
+            <Image
+              src={slide}
+              key={index}
+              alt=""
+              fill={true}
+              className="object-contain"
+            />
+          </div>
         </SwiperSlide>
       </div>
     );
