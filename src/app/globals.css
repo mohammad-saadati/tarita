@@ -39,3 +39,8 @@
 body {
   direction: rtl;
 }
+
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
