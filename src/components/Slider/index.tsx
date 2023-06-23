@@ -3,7 +3,14 @@ import { useState, useEffect } from "react";
 // swiper core
 import { Swiper, SwiperSlide } from "swiper/react";
 // swiper modules
-import { Navigation, Pagination, Autoplay, SwiperOptions } from "swiper";
+import {
+  Navigation,
+  Pagination,
+  FreeMode,
+  Autoplay,
+  SwiperOptions,
+  Thumbs,
+} from "swiper";
 // import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -17,6 +24,7 @@ type SliderProps = {
   slides: Array<any>; // Update the type of slides as per your data structure
   options?: SwiperOptions;
   renderSlides: (slide: any, index: number) => React.ReactNode; // Update the type of slide as per your data structure
+  onSwiper?: (swiper: Swiper) => void;
 };
 
 const Slider: React.FC<SliderProps> = ({
@@ -24,10 +32,11 @@ const Slider: React.FC<SliderProps> = ({
   renderSlides,
   hasPagination,
   hasNavigation,
+  onSwiper,
   options,
 }) => {
   let swiperProps: SwiperOptions = {
-    modules: [Navigation, Pagination, Autoplay],
+    modules: [Navigation, Pagination, Autoplay, FreeMode, Thumbs],
     pagination: hasPagination && {
       type: "bullets",
       clickable: true,
@@ -42,7 +51,7 @@ const Slider: React.FC<SliderProps> = ({
 
   return (
     <div>
-      <Swiper {...swiperProps}>
+      <Swiper {...swiperProps} onSwiper={onSwiper}>
         {slides.map((slide, index) => renderSlides(slide, index))}
         {hasNavigation && (
           <>
