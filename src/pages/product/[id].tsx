@@ -17,6 +17,7 @@ interface ProductProps {
     features: { title: string; value: number }[];
     colors: string[];
     sizes: { title: string; price: number }[];
+    rate: number;
   };
 }
 
@@ -39,6 +40,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
             features={data.features}
             sizes={data.sizes}
             colors={data.colors}
+            rate={data.rate}
           />
         </div>
       </div>
