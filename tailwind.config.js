@@ -14,7 +14,7 @@ module.exports = {
           sm: "100%",
           md: "100%",
           lg: "1024px", // Set a custom max-width for the 'lg' breakpoint
-          xl: "1300px",
+          xl: "1200px",
         },
         padding: {
           DEFAULT: "1rem",
