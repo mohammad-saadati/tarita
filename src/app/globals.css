@@ -9,7 +9,9 @@
   background-color: #eaeaea;
   animation: skeleton-animation 1.2s ease-in-out infinite;
 }
-
+.rr--dir-x {
+  flex-direction: row-reverse!important;
+}
 @keyframes skeleton-animation {
   0% {
     opacity: 0.5;
