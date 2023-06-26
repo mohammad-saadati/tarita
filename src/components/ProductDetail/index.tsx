@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { commaSeperator } from "@/utils/helpers";
 
 type ProductDetailProps = {
   title: string;
@@ -112,6 +113,15 @@ const ProductDetail: FC<ProductDetailProps> = ({
               {item.title}
             </div>
           ))}
+        </div>
+      </div>
+      <div className="flex items-center justify-between border-t border-[#E0E0E0] pt-8">
+        <div>قیمت</div>
+        <div>
+          <span className="text-lg font-bold">
+            {commaSeperator(sizes[activeSizeIndex].price)}
+          </span>
+          تومان
         </div>
       </div>
     </div>
