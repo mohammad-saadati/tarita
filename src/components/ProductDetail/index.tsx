@@ -97,7 +97,7 @@ const ProductDetail: FC<ProductDetailProps> = ({
           ))}
         </div>
       </div>
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-10 mb-5">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-10 mb-8">
         <div className="text-[#4F4F4F] text-sm">اندازه:</div>
         <div className="flex items-center mt-5 md:mt-0">
           {sizes.map((item, index) => (
