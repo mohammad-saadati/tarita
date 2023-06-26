@@ -1,7 +1,9 @@
 import { FC, useState } from "react";
+import Image from "next/image";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { commaSeperator } from "@/utils/helpers";
+import bag from "@/assets/images/bag.svg";
 
 type ProductDetailProps = {
   title: string;
@@ -123,6 +125,10 @@ const ProductDetail: FC<ProductDetailProps> = ({
           </span>
           تومان
         </div>
+      </div>
+      <div className="flex justify-center items-center bg-[#333333] text-white rounded-[10px] mt-10 p-4 cursor-pointer">
+        <div className="text-sm ml-5">افزودن سبد خرید</div>
+        <Image src={bag} alt="bag" />
       </div>
     </div>
   );
