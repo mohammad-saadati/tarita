@@ -3,6 +3,7 @@ import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import ProductThumbSwiper from "@/components/ProductThumbSwiper";
 import ProductDetail from "@/components/ProductDetail";
+import ProductMeta from "@/components/ProductMeta";
 import axios from "@/utils/axios";
 
 interface ProductProps {
@@ -26,6 +27,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
     <div>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-12 md:col-span-6">
+          <ProductMeta />
           <ProductThumbSwiper
             images={data.mainImages}
             thumbs={data.thumbnails}
