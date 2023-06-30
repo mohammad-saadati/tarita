@@ -8,8 +8,12 @@ import { set } from "cypress/types/lodash";
 type InfoTabsProps = {};
 
 type tab = {
-  title: string;
-  cmp: React.ComponentType<any>;
+  title?: string;
+  cmp?: React.ComponentType<any>;
+};
+type activeTab = {
+  index?: number;
+  cmp?: React.ComponentType<any>;
 };
 const tabs: tab[] = [
   { title: "ویژگی", cmp: Features },
@@ -18,7 +22,7 @@ const tabs: tab[] = [
   { title: "پرسش و پاسخ", cmp: QandA },
 ];
 const InfoTabs: FC<InfoTabsProps> = () => {
-  const [activeTab, setActiveTab] = useState({});
+  const [activeTab, setActiveTab] = useState<activeTab>({});
 
   const changeActiveTab = (item: tab, index: number) => {
     setActiveTab({ index, cmp: item.cmp });
@@ -32,11 +36,8 @@ const InfoTabs: FC<InfoTabsProps> = () => {
             {item.title}
           </li>
         ))}
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
       </ul>
+      {activeTab?.cmp ? <activeTab.cmp /> : ""}
     </div>
   );
 };
