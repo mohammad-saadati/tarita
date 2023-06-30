@@ -3,7 +3,7 @@ import {FC} from "react"
 type FeaturesProps = {};
 
 const Features: FC<FeaturesProps> = () => {
-  return <div></div>;
+  return <div>Features</div>;
 };
 
 export default Features;
