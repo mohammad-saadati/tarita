@@ -8,6 +8,7 @@ import ProductDetail from "@/components/ProductDetail";
 import ProductMeta from "@/components/ProductMeta";
 import Slider from "@/components/Slider";
 import Card from "@/components/Card";
+import InfoTabs from "@/components/InfoTabs";
 import { SwiperSlide } from "swiper/react";
 import axios from "@/utils/axios";
 import garantiePrice from "@/assets/images/garantie-price.svg";
@@ -105,6 +106,9 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
             }}
             hasNavigation={true}
           />
+        </div>
+        <div className="col-span-12 md:col-span-12 mt-12">
+          <InfoTabs />
         </div>
       </div>
     </div>
