@@ -22,22 +22,34 @@ const tabs: tab[] = [
   { title: "پرسش و پاسخ", cmp: QandA },
 ];
 const InfoTabs: FC<InfoTabsProps> = () => {
-  const [activeTab, setActiveTab] = useState<activeTab>({});
+  const [activeTab, setActiveTab] = useState<activeTab>({
+    index: 0,
+    cmp: tabs[0].cmp,
+  });
 
-  const changeActiveTab = (item: tab, index: number) => {
-    setActiveTab({ index, cmp: item.cmp });
+  const changeActiveTab = (item: tab, idx: number) => {
+    setActiveTab({ index: idx, cmp: item.cmp });
   };
 
   return (
     <div>
-      <ul>
+      <ul className="flex items-center border-b border-[#E0E0E0]">
         {tabs.map((item, index) => (
-          <li key={index} onClick={() => changeActiveTab(item, index)}>
+          <li
+            style={{
+              borderBottom: `1px solid ${
+                index === activeTab.index ? "#333333" : "transparent"
+              } `,
+            }}
+            key={index}
+            onClick={() => changeActiveTab(item, index)}
+            className="ml-5 pb-3 cursor-pointer"
+          >
             {item.title}
           </li>
         ))}
       </ul>
-      {activeTab?.cmp ? <activeTab.cmp /> : ""}
+      {activeTab?.cmp ? <activeTab.cmp /> : null}
     </div>
   );
 };
