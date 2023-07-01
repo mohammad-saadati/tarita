@@ -5,7 +5,9 @@ import Comments from "@/components/InfoTabs/Comments";
 import QandA from "@/components/InfoTabs/QandA";
 import { set } from "cypress/types/lodash";
 
-type InfoTabsProps = {};
+type InfoTabsProps = {
+  features: { title: string; value: string }[];
+};
 
 type tab = {
   title?: string;
@@ -21,7 +23,7 @@ const tabs: tab[] = [
   { title: "نظرات کاربران", cmp: Comments },
   { title: "پرسش و پاسخ", cmp: QandA },
 ];
-const InfoTabs: FC<InfoTabsProps> = () => {
+const InfoTabs: FC<InfoTabsProps> = ({ features }) => {
   const [activeTab, setActiveTab] = useState<activeTab>({
     index: 0,
     cmp: tabs[0].cmp,
@@ -33,7 +35,7 @@ const InfoTabs: FC<InfoTabsProps> = () => {
 
   return (
     <div>
-      <ul className="flex items-center border-b border-[#E0E0E0]">
+      <ul className="flex items-center border-b border-[#E0E0E0] overflow-x-auto whitespace-nowrap">
         {tabs.map((item, index) => (
           <li
             style={{
@@ -43,13 +45,15 @@ const InfoTabs: FC<InfoTabsProps> = () => {
             }}
             key={index}
             onClick={() => changeActiveTab(item, index)}
-            className="ml-5 pb-3 cursor-pointer"
+            className={`${index !== tabs.length - 1 ? 'ml-5 ' : ''} pb-3 cursor-pointer`}
           >
             {item.title}
           </li>
         ))}
       </ul>
-      {activeTab?.cmp ? <activeTab.cmp /> : null}
+      <div className="py-10">
+        {activeTab?.cmp ? <activeTab.cmp features={features} /> : null}
+      </div>
     </div>
   );
 };
