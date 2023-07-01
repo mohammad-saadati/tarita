@@ -3,10 +3,10 @@ import Features from "@/components/InfoTabs/Features";
 import Descriptions from "@/components/InfoTabs/Descriptions";
 import Comments from "@/components/InfoTabs/Comments";
 import QandA from "@/components/InfoTabs/QandA";
-import { set } from "cypress/types/lodash";
 
 type InfoTabsProps = {
   features: { title: string; value: string }[];
+  description: { text: string; image: string };
 };
 
 type tab = {
@@ -23,7 +23,7 @@ const tabs: tab[] = [
   { title: "نظرات کاربران", cmp: Comments },
   { title: "پرسش و پاسخ", cmp: QandA },
 ];
-const InfoTabs: FC<InfoTabsProps> = ({ features }) => {
+const InfoTabs: FC<InfoTabsProps> = ({ features, description }) => {
   const [activeTab, setActiveTab] = useState<activeTab>({
     index: 0,
     cmp: tabs[0].cmp,
@@ -45,14 +45,18 @@ const InfoTabs: FC<InfoTabsProps> = ({ features }) => {
             }}
             key={index}
             onClick={() => changeActiveTab(item, index)}
-            className={`${index !== tabs.length - 1 ? 'ml-5 ' : ''} pb-3 cursor-pointer`}
+            className={`${
+              index !== tabs.length - 1 ? "ml-5 " : ""
+            } pb-3 cursor-pointer`}
           >
             {item.title}
           </li>
         ))}
       </ul>
       <div className="py-10">
-        {activeTab?.cmp ? <activeTab.cmp features={features} /> : null}
+        {activeTab?.cmp ? (
+          <activeTab.cmp features={features} description={description} />
+        ) : null}
       </div>
     </div>
   );
