@@ -112,7 +112,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
           />
         </div>
         <div className="col-span-12 md:col-span-8 mt-12">
-          <InfoTabs features={data.detail.features} />
+          <InfoTabs features={data.detail.features} description={data.detail.description}/>
         </div>
         <div className="col-span-12 md:col-span-4 mt-12">
           <Ratings />
