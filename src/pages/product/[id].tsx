@@ -8,6 +8,7 @@ import ProductDetail from "@/components/ProductDetail";
 import ProductMeta from "@/components/ProductMeta";
 import Slider from "@/components/Slider";
 import Card from "@/components/Card";
+import Ratings from "@/components/Ratings";
 import InfoTabs from "@/components/InfoTabs";
 import { SwiperSlide } from "swiper/react";
 import axios from "@/utils/axios";
@@ -30,6 +31,9 @@ interface ProductProps {
     sizes: { title: string; price: number }[];
     relateds: { url: url; title: string; price: number; rate: number }[];
     rate: number;
+    detail: {
+      features: { title: string; value: string }[];
+    };
   };
 }
 
@@ -107,8 +111,11 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
             hasNavigation={true}
           />
         </div>
-        <div className="col-span-12 md:col-span-12 mt-12">
-          <InfoTabs />
+        <div className="col-span-12 md:col-span-8 mt-12">
+          <InfoTabs features={data.detail.features} />
+        </div>
+        <div className="col-span-12 md:col-span-4 mt-12">
+          <Ratings />
         </div>
       </div>
     </div>
