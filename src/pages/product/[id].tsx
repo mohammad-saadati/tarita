@@ -33,6 +33,8 @@ interface ProductProps {
     rate: number;
     detail: {
       features: { title: string; value: string }[];
+      description: { text: string; image: string };
+      comments: [];
     };
   };
 }
@@ -112,7 +114,11 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
           />
         </div>
         <div className="col-span-12 md:col-span-8 mt-12">
-          <InfoTabs features={data.detail.features} description={data.detail.description}/>
+          <InfoTabs
+            features={data.detail.features}
+            description={data.detail.description}
+            comments={data.detail.comments}
+          />
         </div>
         <div className="col-span-12 md:col-span-4 mt-12">
           <Ratings />
