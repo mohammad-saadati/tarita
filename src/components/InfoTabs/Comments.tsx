@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
+import CommentForm from "@/components/Forms/CommentForm";
 import like from "@/assets/images/like.svg";
 import dislike from "@/assets/images/dislike.svg";
 
@@ -45,6 +46,7 @@ const Comments: FC<CommentsProps> = ({ comments }) => {
           </div>
         </div>
       ))}
+      <CommentForm />
     </div>
   );
 };
