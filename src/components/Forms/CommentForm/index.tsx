@@ -2,8 +2,12 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 
 type CommentFormProps = {};
+type formData = { comment: string };
+
+let renderCount = 0;
 
 const CommentForm: FC<CommentFormProps> = () => {
+  renderCount++;
 
   const {
     register,
