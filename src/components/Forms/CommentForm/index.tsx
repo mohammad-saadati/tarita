@@ -11,6 +11,12 @@ const CommentForm: FC<CommentFormProps> = () => {
     formState: { errors },
   } = useForm({ defaultValues: { comment: "" } });
 
+  console.log("errors ", errors);
+
+  const formHandler = (data: formData) => {
+    console.log("data", data);
+  };
+
   return (
     <div className="">
       <form className="" onSubmit={handleSubmit(formHandler)}>
