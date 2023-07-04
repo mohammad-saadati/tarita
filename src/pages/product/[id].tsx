@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { GetServerSidePropsContext } from "next";
+import type { ReactElement } from "react";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import ProductThumbSwiper from "@/components/ProductThumbSwiper";
@@ -29,7 +30,7 @@ interface ProductProps {
     features: { title: string; value: number }[];
     colors: string[];
     sizes: { title: string; price: number }[];
-    relateds: { url: url; title: string; price: number; rate: number }[];
+    relateds: { url: string; title: string; price: number; rate: number }[];
     rate: number;
     detail: {
       features: { title: string; value: string }[];
@@ -41,7 +42,13 @@ interface ProductProps {
 
 const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
   const renderCards = (
-    slide: { url: string; title: string; price: number; rate: number },
+    slide: {
+      id: number;
+      url: string;
+      title: string;
+      price: number;
+      rate: number;
+    },
     index: number
   ) => {
     return (
@@ -128,8 +135,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
   );
 };
 
-Product.getLayout = (page: ReactElement) =>
-  identifier(page, LayoutTypes.default);
+Product.getLayout = (page: ReactElement) => identifier(page, LayoutTypes.default);
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
