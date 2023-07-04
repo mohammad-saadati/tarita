@@ -54,7 +54,13 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
     );
   };
   const renderCards = (
-    slide: { url: string; title: string; price: number; rate: number },
+    slide: {
+      id: number;
+      url: string;
+      title: string;
+      price: number;
+      rate: number;
+    },
     index: number
   ) => {
     return (
@@ -304,8 +310,6 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
   );
 };
 
-Home.getLayout = (page: ReactElement) => identifier(page, LayoutTypes.default);
-
 export async function getServerSideProps() {
   try {
     const res = await axios.get("/home");
@@ -318,4 +322,7 @@ export async function getServerSideProps() {
 
   return { props: { data: {} } };
 }
+
+Home.getLayout = (page: ReactElement) => identifier(page, LayoutTypes.default);
+
 export default Home;
