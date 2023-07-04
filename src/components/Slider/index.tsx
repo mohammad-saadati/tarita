@@ -24,7 +24,7 @@ type SliderProps = {
   slides: Array<any>; // Update the type of slides as per your data structure
   options?: SwiperOptions;
   renderSlides: (slide: any, index: number) => React.ReactNode; // Update the type of slide as per your data structure
-  onSwiper?: (swiper: Swiper) => void;
+  onSwiper?: any;
 };
 
 const Slider: React.FC<SliderProps> = ({
