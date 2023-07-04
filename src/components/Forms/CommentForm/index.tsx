@@ -1,8 +1,16 @@
 import { FC } from "react";
+import { useForm } from "react-hook-form";
 
 type CommentFormProps = {};
 
 const CommentForm: FC<CommentFormProps> = () => {
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ defaultValues: { comment: "" } });
+
   return (
     <div className="">
       <form className="">
