@@ -13,12 +13,24 @@ const CommentForm: FC<CommentFormProps> = () => {
 
   return (
     <div className="">
-      <form className="">
-        <textarea
-          placeholder="نظر خود را بنویسید"
-          className="bg-[#F2F2F2] w-full resize-none h-32 p-4 rounded-[10px]"
-          cols="20"
-        />
+      <form className="" onSubmit={handleSubmit(formHandler)}>
+        {/* {renderCount} */}
+        <div className="relative">
+          <textarea
+            {...register("comment", {
+              required: "لطفا نظر خود را وارد کنید.",
+              minLength: {
+                value: 10,
+                message: "متن نظر باید حداقل 10 کاراکتر باشد.",
+              },
+            })}
+            placeholder="نظر خود را بنویسید"
+            className="bg-[#F2F2F2] w-full resize-none h-32 p-4 rounded-[10px]"
+          />
+          <div className="absolute text-xs text-red-900">
+            {errors.comment?.message}
+          </div>
+        </div>
         <div className="flex justify-end mt-5">
           <button
             type="submit"
