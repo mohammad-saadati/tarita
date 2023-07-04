@@ -107,7 +107,6 @@ const ProductDetail: FC<ProductDetailProps> = ({
               onClick={() => setActiveSizeIndex(index)}
               className="outline outline-1 outline-offset-4 rounded-[2px] text-[10px] md:text-sm ml-4 md:ml-0 md:mr-4 p-1 cursor-pointer"
               style={{
-                backgroundColor: item,
                 outlineColor: index === activeSizeIndex ? "#333333" : "#E0E0E0",
               }}
               key={index}
