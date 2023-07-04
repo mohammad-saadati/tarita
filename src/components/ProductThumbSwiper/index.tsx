@@ -72,11 +72,15 @@ const ProductThumbSwiper: FC<ProductThumbSwiperProps> = ({
             loop: false,
             thumbs: { swiper: thumbsSwiper },
           }}
+          hasNavigation={false}
+          hasPagination={false}
         />
         <Slider
           slides={thumbs}
           renderSlides={renderThumbs}
           onSwiper={setThumbsSwiper}
+          hasNavigation={false}
+          hasPagination={false}
           options={{
             autoplay: false,
             freeMode: true,
