@@ -16,7 +16,9 @@ const QandA: FC<QandAProps> = ({ questions }) => {
     <div>
       {questions.map((item, index) => (
         <div
-          className="flex flex-col border-b border-[#F2F2F2] pb-4 mb-4"
+          className={`flex flex-col ${
+            index !== questions.length - 1 ? "border-b border-[#F2F2F2]" : ""
+          } pb-4 mb-4`}
           key={index}
         >
           <div className="text-sm font-medium">{item.writer}</div>
@@ -29,10 +31,7 @@ const QandA: FC<QandAProps> = ({ questions }) => {
             </div>
           </div>
           {item.replies.map((rep, indx) => (
-            <div
-              className="flex flex-col pb-4 mb-4 mr-10"
-              key={indx}
-            >
+            <div className="flex flex-col pb-4 mb-4 mr-10" key={indx}>
               <div className="text-sm font-medium">{rep.writer}</div>
               <div className="text-xs text-[#828282] mb-3.5">{rep.date}</div>
               <div className="text-sm">{rep.text}</div>
