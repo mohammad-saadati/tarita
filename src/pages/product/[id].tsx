@@ -36,6 +36,7 @@ interface ProductProps {
       features: { title: string; value: string }[];
       description: { text: string; image: string };
       comments: [];
+      questions: [];
     };
   };
 }
@@ -125,6 +126,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
             features={data.detail.features}
             description={data.detail.description}
             comments={data.detail.comments}
+            questions={data.detail.questions}
           />
         </div>
         <div className="col-span-12 md:col-span-4 mt-12">
