@@ -38,6 +38,7 @@ interface ProductProps {
       comments: [];
       questions: [];
     };
+    rates: [];
   };
 }
 
@@ -130,14 +131,37 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
           />
         </div>
         <div className="col-span-12 md:col-span-4 mt-12">
-          <Ratings />
+          <Ratings ratings={data.rates} />
+        </div>
+        <div className="col-span-12 md:col-span-12 mt-12">
+          <div className="flex justify-between">
+            <div className="font-bold mb-[40px]">آخرین محصولات بازدید شده</div>
+            <Link href="#" className="text-[12px]">
+              مشاهده همه محصولات
+            </Link>
+          </div>
+          <Slider
+            slides={data.relateds}
+            renderSlides={renderCards}
+            options={{
+              slidesPerView: 2,
+              breakpoints: {
+                640: { slidesPerView: 3 },
+                1024: { slidesPerView: 5 },
+              },
+              autoplay: false,
+              spaceBetween: 15,
+            }}
+            hasNavigation={true}
+          />
         </div>
       </div>
     </div>
   );
 };
 
-Product.getLayout = (page: ReactElement) => identifier(page, LayoutTypes.default);
+Product.getLayout = (page: ReactElement) =>
+  identifier(page, LayoutTypes.default);
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
