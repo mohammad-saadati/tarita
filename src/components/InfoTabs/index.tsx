@@ -8,6 +8,7 @@ type InfoTabsProps = {
   features: { title: string; value: string }[];
   description: { text: string; image: string };
   comments: [];
+  questions: [];
 };
 
 type tab = {
@@ -24,7 +25,13 @@ const tabs: tab[] = [
   { title: "نظرات کاربران", cmp: Comments },
   { title: "پرسش و پاسخ", cmp: QandA },
 ];
-const InfoTabs: FC<InfoTabsProps> = ({ features, description, comments }) => {
+
+const InfoTabs: FC<InfoTabsProps> = ({
+  features,
+  description,
+  comments,
+  questions,
+}) => {
   const [activeTab, setActiveTab] = useState<activeTab>({
     index: 0,
     cmp: tabs[0].cmp,
@@ -60,6 +67,7 @@ const InfoTabs: FC<InfoTabsProps> = ({ features, description, comments }) => {
             features={features}
             description={description}
             comments={comments}
+            questions={questions}
           />
         ) : null}
       </div>
