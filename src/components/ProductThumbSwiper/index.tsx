@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import Slider from "@/components/Slider";
 // styles
 import "swiper/css/free-mode";
@@ -75,21 +75,22 @@ const ProductThumbSwiper: FC<ProductThumbSwiperProps> = ({
           hasNavigation={false}
           hasPagination={false}
         />
-        <Slider
-          slides={thumbs}
-          renderSlides={renderThumbs}
-          onSwiper={setThumbsSwiper}
-          hasNavigation={false}
-          hasPagination={false}
-          options={{
-            autoplay: false,
-            freeMode: true,
-            slidesPerView: 6,
-            loop: false,
-            spaceBetween: 15,
-            centerInsufficientSlides: true,
-          }}
-        />
+        <div className="flex justify-center">
+          <Slider
+            slides={thumbs}
+            renderSlides={renderThumbs}
+            onSwiper={setThumbsSwiper}
+            hasNavigation={false}
+            hasPagination={false}
+            options={{
+              autoplay: false,
+              freeMode: true,
+              slidesPerView: 6,
+              loop: false,
+              spaceBetween: 15,
+            }}
+          />
+        </div>
       </div>
     </>
   );
