@@ -31,7 +31,7 @@ const ProductDetail: FC<ProductDetailProps> = ({
 
   return (
     <div>
-      <div className="text-lg md:text-2xl font-medium mb-5">{title}</div>
+      <div className="text-base md:text-2xl font-medium mt-5 mb-5">{title}</div>
       <div className="flex items-start justify-between">
         <div className="flex flex-col">
           <div className="flex items-center mb-1">
