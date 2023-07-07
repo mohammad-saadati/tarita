@@ -9,7 +9,7 @@ const Layout = ({ children }: layoutProps) => {
     <>
       <div>
         <div></div>
-        <div className="container my-[100px]">{children}</div>
+        <div className="container my-[70px] md:my-[100px]">{children}</div>
       </div>
     </>
   );
