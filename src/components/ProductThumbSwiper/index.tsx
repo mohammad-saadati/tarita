@@ -44,7 +44,7 @@ const ProductThumbSwiper: FC<ProductThumbSwiperProps> = ({
   const renderThumbs = (slide: photo, index: number) => {
     return (
       <div className="flex justify-center items-center">
-        <SwiperSlide className="thumbs-slide border-[1px] border-[#E0E0E0] rounded-[10px]">
+        <SwiperSlide className="thumbs-slide border-[1px] border-[#E0E0E0] rounded-[10px] cursor-pointer">
           <div className="flex justify-center items-center">
             <Image
               src={slide.url}
