@@ -1,15 +1,21 @@
 import { GetServerSidePropsContext } from "next";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
+import Filters from "@/components/Filters";
 import axios from "@/utils/axios";
 
-interface SearchProps {}
+interface SearchProps {
+  
+}
 
 const Search: NextPageWithLayout<SearchProps> = ({ data }) => {
   return (
     <div className="grid grid-cols-12 gap-4">
       <div className="col-span-12 md:col-span-9 lg:col-span-10 relative">
-        
+        <Filters />
+      </div>
+      <div className="col-span-12 md:col-span-9 lg:col-span-10 relative">
+        {}
       </div>
     </div>
   );
