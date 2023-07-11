@@ -54,7 +54,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       axios.get(`/filters`),
     ]);
 
-    console.log("***ddddd*", products, filters);
+    console.log("***ddddd*", products, filters.data);
     return { props: { products: products.data, filters: filters.data } };
   } catch (error) {
     console.log(error);
