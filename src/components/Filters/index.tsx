@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
 type FiltersProps = {
-  // Define props here
+  filters: { title: string; value: string }[];
 };
 
-const Filters: FC<FiltersProps> = () => {
+const Filters: FC<FiltersProps> = ({filters}) => {
   return (
     <>
-      Filters
+      <div></div>
     </>
   );
 };
