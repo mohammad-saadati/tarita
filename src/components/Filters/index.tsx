@@ -5,14 +5,21 @@ type FiltersProps = {
   title: string;
 };
 
-const Filters: FC<FiltersProps> = ({ filters }) => {
+const Filters: FC<FiltersProps> = ({ filters, title }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <div>
+    <div className="border border-[#E0E0E0] rounded-[10px] py-[15px]">
+      <div className="flex items-center justify-between text-sm font-semibold mb-[15px] border-b px-[15px] pb-[15px]">
+        <div>{title}</div>
+        <div>
+          <span className="w-[11px] h-[1px] bg-[#404040]"><img src="@/assets/images/plus.svg"/></span>
+          <span className="text-lg w-[]"><img src="@/assets/images/minus.svg"/></span>
+        </div>
+      </div>
       {filters.map((item, index) => (
-        <div className="flex items-center">
-          <div>{item.title}</div>
+        <div className="flex justify-between items-center px-[15px] pb-[15px]">
+          <div className="text-[13px]">{item.title}</div>
           <div
             className={`w-[5px] h-[5px] ${
               index === activeIndex
