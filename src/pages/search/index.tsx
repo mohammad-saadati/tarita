@@ -19,27 +19,31 @@ interface SearchProps {
 const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   return (
     <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-12 md:col-span-9 lg:col-span-2 relative">
+      <div className="col-span-12 md:col-span-9 lg:col-span-3 relative">
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-12 md:col-span-9 lg:col-span-2 relative">
-            <Filters filters={filters.categories} />
+          <div className="col-span-12 relative">
+            <Filters filters={filters.categories} title="دسته بندی نتایج" />
           </div>
-          <div className="col-span-12 md:col-span-9 lg:col-span-2 relative">
-            <Filters filters={filters.knotCount} />
+          <div className="col-span-12 relative">
+            <Filters filters={filters.knotCount} title="تعداد شانه" />
           </div>
-          <div className="col-span-12 md:col-span-9 lg:col-span-2 relative">
-            <Filters filters={filters.brands} />
+          <div className="col-span-12 relative">
+            <Filters filters={filters.brands} title="برند" />
           </div>
         </div>
       </div>
-      {products.map((item, index) => (
-        <div
-          className="col-span-12 md:col-span-9 lg:col-span-2 relative"
-          key={index}
-        >
-          <Card item={item} />
+      <div className="col-span-12 md:col-span-9 lg:col-span-9">
+        <div className="grid grid-cols-12 gap-4">
+          {products.map((item, index) => (
+            <div
+              className="col-span-12 md:col-span-9 lg:col-span-3 relative"
+              key={index}
+            >
+              <Card item={item} />
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
