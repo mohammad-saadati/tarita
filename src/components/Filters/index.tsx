@@ -1,4 +1,7 @@
 import React, { FC, useState } from "react";
+import Image from "next/image";
+import plus from "@/assets/images/plus.svg";
+import minus from "@/assets/images/minus.svg";
 
 type FiltersProps = {
   filters: { title: string; value: string }[];
@@ -13,8 +16,8 @@ const Filters: FC<FiltersProps> = ({ filters, title }) => {
       <div className="flex items-center justify-between text-sm font-semibold mb-[15px] border-b px-[15px] pb-[15px]">
         <div>{title}</div>
         <div>
-          <span className="w-[11px] h-[1px] bg-[#404040]"><img src="@/assets/images/plus.svg"/></span>
-          <span className="text-lg w-[]"><img src="@/assets/images/minus.svg"/></span>
+          <Image src={plus} alt="plus" width={10} height={15} />
+          <Image src={minus} alt="minus" width={10} height={15} />
         </div>
       </div>
       {filters.map((item, index) => (
