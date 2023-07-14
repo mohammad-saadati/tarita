@@ -15,7 +15,7 @@ const Filters: FC<FiltersProps> = ({ filters, title }) => {
 
   return (
     <div className="border border-[#E0E0E0] rounded-[10px] pt-[15px]">
-      <div className="flex items-center justify-between text-sm font-semibold mb-[15px] border-b px-[15px] pb-[15px]">
+      <div className="flex items-center justify-between text-sm font-semibold px-[15px] pb-[15px]">
         <div>{title}</div>
         <div
           className="cursor-pointer"
@@ -30,7 +30,7 @@ const Filters: FC<FiltersProps> = ({ filters, title }) => {
       </div>
       <div className={`${styles.filtersWrapper} ${isCollapsed ? styles.isCollapsed : ""}`}>
         {filters.map((item, index) => (
-          <div className="flex justify-between items-center px-[15px] pb-[15px]">
+          <div className={`flex justify-between items-center px-[15px] pb-[15px] ${index === 0 ? 'pt-[15px] border-t' : ''}`}>
             <div className="text-[13px]">{item.title}</div>
             <div
               className={`w-[15px] h-[15px] rounded border ${
