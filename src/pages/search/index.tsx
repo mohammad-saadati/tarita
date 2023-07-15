@@ -30,6 +30,11 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
           <div className="col-span-12 relative">
             <Filters filters={filters.brands} title="برند" />
           </div>
+          <div className="col-span-12 relative">
+            <Filters filters={filters.brands} title="برند">
+              <div>test</div>
+            </Filters>
+          </div>
         </div>
       </div>
       <div className="col-span-12 md:col-span-9 lg:col-span-9">
