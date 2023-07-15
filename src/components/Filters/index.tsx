@@ -1,15 +1,16 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, ReactElement } from "react";
 import Image from "next/image";
 import plus from "@/assets/images/plus.svg";
 import minus from "@/assets/images/minus.svg";
 import styles from "./filters.module.scss";
 
 type FiltersProps = {
-  filters: { title: string; value: string }[];
+  filters?: { title: string; value: string }[];
   title: string;
+  children?: ReactElement;
 };
 
-const Filters: FC<FiltersProps> = ({ filters, title }) => {
+const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -28,19 +29,29 @@ const Filters: FC<FiltersProps> = ({ filters, title }) => {
           )}
         </div>
       </div>
-      <div className={`${styles.filtersWrapper} ${isCollapsed ? styles.isCollapsed : ""}`}>
-        {filters.map((item, index) => (
-          <div className={`flex justify-between items-center px-[15px] pb-[15px] ${index === 0 ? 'pt-[15px] border-t' : ''}`}>
-            <div className="text-[13px]">{item.title}</div>
-            <div
-              className={`w-[15px] h-[15px] rounded border ${
-                index === activeIndex
-                  ? "bg-[#333333] border-[#333333]"
-                  : "bg-[#F2F2F2] border-[#BDBDBD]"
-              }`}
-            ></div>
-          </div>
-        ))}
+      <div
+        className={`${styles.filtersWrapper} ${
+          isCollapsed ? styles.isCollapsed : ""
+        }`}
+      >
+        {children
+          ? children
+          : filters?.map((item, index) => (
+              <div
+                className={`flex justify-between items-center px-[15px] pb-[15px] ${
+                  index === 0 ? "pt-[15px] border-t" : ""
+                }`}
+              >
+                <div className="text-[13px]">{item.title}</div>
+                <div
+                  className={`w-[15px] h-[15px] rounded border ${
+                    index === activeIndex
+                      ? "bg-[#333333] border-[#333333]"
+                      : "bg-[#F2F2F2] border-[#BDBDBD]"
+                  }`}
+                ></div>
+              </div>
+            ))}
       </div>
     </div>
   );
