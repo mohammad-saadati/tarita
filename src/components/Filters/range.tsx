@@ -1,4 +1,7 @@
 import React, { FC } from "react";
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
+
 import Filters from "@/components/Filters";
 
 type RangeProps = {
@@ -8,7 +11,9 @@ type RangeProps = {
 const Range: FC<RangeProps> = () => {
   return (
     <div>
-      <Filters />
+      <Filters title="محدوده قیمت">
+        <div className="border-t py-8 px-5"><RangeSlider /></div>
+      </Filters>
     </div>
   );
 };
