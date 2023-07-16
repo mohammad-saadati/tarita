@@ -44,7 +44,8 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
               >
                 <div className="text-[13px]">{item.title}</div>
                 <div
-                  className={`w-[15px] h-[15px] rounded border ${
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-[15px] h-[15px] rounded border cursor-pointer ${
                     index === activeIndex
                       ? "bg-[#333333] border-[#333333]"
                       : "bg-[#F2F2F2] border-[#BDBDBD]"
