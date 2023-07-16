@@ -2,6 +2,7 @@ import { GetServerSidePropsContext } from "next";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import Filters from "@/components/Filters";
+import Range from "@/components/Filters/Range";
 import Card from "@/components/Card";
 import axios from "@/utils/axios";
 
@@ -31,9 +32,7 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
             <Filters filters={filters.brands} title="برند" />
           </div>
           <div className="col-span-12 relative">
-            <Filters filters={filters.brands} title="برند">
-              <div>test</div>
-            </Filters>
+            <Range />
           </div>
         </div>
       </div>
