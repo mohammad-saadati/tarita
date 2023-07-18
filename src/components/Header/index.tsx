@@ -1,13 +1,19 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import userIcon from "@/assets/images/user.svg";
 import bagIcon from "@/assets/images/bag.svg";
 import searchNormal from "@/assets/images/search-normal.svg";
+import { store } from "@/store";
+import { setSearch } from "@/store/searchSlice";
 
 type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
+  const handleSearch = (ev: ChangeEvent<HTMLInputElement>) => {
+    store.dispatch(setSearch(ev.target.value));
+  };
+
   return (
     <div className="bg-[#2B2B2B]">
       <div className="container flex justify-between items-center h-[60px]">
@@ -17,7 +23,10 @@ const Header: FC<HeaderProps> = () => {
           </Link>
         </div>
         <div className="relative">
-          <input className="bg-[#4A4A4A] rounded-[7px] h-[34px] text-[#D4D4D4] p-2 focus-visible:outline-none w-[150px] md:w-[400px]" />
+          <input
+            onChange={handleSearch}
+            className="bg-[#4A4A4A] rounded-[7px] h-[34px] text-[#D4D4D4] p-2 focus-visible:outline-none w-[150px] md:w-[400px]"
+          />
           <div className="absolute left-2 top-2">
             <Image
               src={searchNormal}
