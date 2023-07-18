@@ -7,6 +7,8 @@ import localFont from "next/font/local";
 import "@/app/globals.css";
 // icomoon
 import "../../public/fonts/icomoon/style.css";
+// context
+import { UserProvider } from "@/contexts/UserContext";
 
 const fonts = localFont({
   src: [
@@ -46,7 +48,9 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <main className={fonts.className}>
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
     </main>
   );
 }
