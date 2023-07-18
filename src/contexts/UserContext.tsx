@@ -1,10 +1,14 @@
-import { createContext, useState } from "react";
+import { ReactElement, createContext, useState, FC } from "react";
 
-export const UserContext = createContext();
+type UserContextProps = {
+  children: ReactElement;
+};
 
-export const UserProvider = ({ children }) => {
+export const UserContext = createContext({});
+
+export const UserProvider: FC<UserContextProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
-
+  
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
