@@ -1,6 +1,7 @@
 import { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
-import type { AppProps } from "next/app";
+import App, { AppContext, AppInitialProps, AppProps } from "next/app";
+import axios from "@/utils/axios";
 // font
 import localFont from "next/font/local";
 //
@@ -9,6 +10,9 @@ import "@/app/globals.css";
 import "../../public/fonts/icomoon/style.css";
 // context
 import { UserProvider } from "@/contexts/UserContext";
+// store
+import { store } from "@/store";
+import { setCurrentUser, User } from "@/store/features/currentUser";
 
 const fonts = localFont({
   src: [
@@ -41,16 +45,44 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
+  data: User;
 };
 
-export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+export default function MyApp({
+  Component,
+  pageProps,
+  data,
+}: AppPropsWithLayout & AppProps) {
   const getLayout = Component.getLayout ?? ((page) => page);
+
+  store.dispatch(setCurrentUser(data));
 
   return getLayout(
     <main className={fonts.className}>
-      <UserProvider>
-        <Component {...pageProps} />
-      </UserProvider>
+      <Component {...pageProps} />
     </main>
   );
 }
+
+type AppOwnProps = { data: {} };
+
+MyApp.getInitialProps = async (
+  context: AppContext
+): Promise<AppOwnProps & AppInitialProps> => {
+  const ctx = await App.getInitialProps(context);
+  try {
+    const res = await axios.get("/currentUser");
+    const { data } = res;
+
+    console.log("custom app ****", data);
+
+    return { ...ctx, data: data };
+  } catch (error) {
+    console.log(error);
+  }
+
+  return {
+    ...ctx,
+    data: {},
+  };
+};
