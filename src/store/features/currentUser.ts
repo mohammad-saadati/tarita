@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface User {
+export interface User {
   id: string;
   name: string;
   avatar: string;
@@ -26,5 +26,5 @@ const currentUser = createSlice({
   },
 });
 
-export const {} = currentUser.actions;
+export const { setCurrentUser } = currentUser.actions;
 export default currentUser.reducer;
