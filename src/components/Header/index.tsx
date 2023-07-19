@@ -5,7 +5,7 @@ import userIcon from "@/assets/images/user.svg";
 import bagIcon from "@/assets/images/bag.svg";
 import searchNormal from "@/assets/images/search-normal.svg";
 import { store } from "@/store";
-import { setSearch } from "@/store/searchSlice";
+import { setSearch } from "@/store/features/search";
 
 type HeaderProps = {};
 
