@@ -5,13 +5,17 @@ import userIcon from "@/assets/images/user.svg";
 import bagIcon from "@/assets/images/bag.svg";
 import searchNormal from "@/assets/images/search-normal.svg";
 import { store } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setSearch } from "@/store/features/search";
 
 type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
+  const dispatch = useAppDispatch();
+  const searchVal = useAppSelector((state) => state.search.search);
+
   const handleSearch = (ev: ChangeEvent<HTMLInputElement>) => {
-    store.dispatch(setSearch(ev.target.value));
+    dispatch(setSearch(ev.target.value));
   };
 
   return (
@@ -25,6 +29,7 @@ const Header: FC<HeaderProps> = () => {
         </div>
         <div className="relative">
           <input
+            value={searchVal}
             onChange={handleSearch}
             className="bg-[#4A4A4A] rounded-[7px] h-[34px] text-[#D4D4D4] p-2 focus-visible:outline-none w-[150px] md:w-[400px]"
           />
