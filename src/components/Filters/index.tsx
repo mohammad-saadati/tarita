@@ -1,18 +1,31 @@
 import React, { FC, useState, ReactElement } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import plus from "@/assets/images/plus.svg";
 import minus from "@/assets/images/minus.svg";
 import styles from "./filters.module.scss";
 
 type FiltersProps = {
-  filters?: { title: string; value: string }[];
+  filters: { title: string; value: string; cat: string }[];
   title: string;
   children?: ReactElement;
 };
 
 const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState<null | number>(null);
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const router = useRouter();
+
+  const onFilterClick = (index: number) => {
+    const queryParams = new URLSearchParams(router.query);
+    queryParams.set(filters[index].cat, filters[index].value);
+    router.push({
+      pathname: router.pathname,
+      search: queryParams.toString(),
+    });
+    
+    setActiveIndex(index);
+  };
 
   return (
     <div className="border border-[#E0E0E0] rounded-[10px] pt-[15px]">
@@ -44,7 +57,7 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
               >
                 <div className="text-[13px]">{item.title}</div>
                 <div
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => onFilterClick(index)}
                   className={`w-[15px] h-[15px] rounded border cursor-pointer ${
                     index === activeIndex
                       ? "bg-[#333333] border-[#333333]"
