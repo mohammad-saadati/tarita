@@ -6,7 +6,7 @@ import minus from "@/assets/images/minus.svg";
 import styles from "./filters.module.scss";
 
 type FiltersProps = {
-  filters: { title: string; value: string; cat: string }[];
+  filters?: { title: string; value: string; cat: string }[];
   title: string;
   children?: ReactElement;
 };
@@ -17,13 +17,27 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
   const router = useRouter();
 
   const onFilterClick = (index: number) => {
-    const queryParams = new URLSearchParams(router.query);
-    queryParams.set(filters[index].cat, filters[index].value);
+    const queryParams = new URLSearchParams();
+
+    for (const [key, value] of Object.entries(router.query)) {
+      if (Array.isArray(value)) {
+        // If the value is an array, add each item separately
+        for (const item of value) {
+          queryParams.append(key, item);
+        }
+      } else {
+        if (typeof value === "string") {
+          queryParams.set(key, value);
+        }
+      }
+    }
+    if (filters?.[index]?.cat)
+      queryParams.set(filters[index].cat, filters[index].value);
     router.push({
       pathname: router.pathname,
       search: queryParams.toString(),
     });
-    
+
     setActiveIndex(index);
   };
 
