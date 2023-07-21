@@ -1,4 +1,5 @@
 import { GetServerSidePropsContext } from "next";
+import type { ReactElement } from "react";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import Filters from "@/components/Filters";
