@@ -23,7 +23,7 @@ const Header: FC<HeaderProps> = () => {
       <div className="container flex justify-between items-center h-[60px]">
         <div className="text-white font-bold text-[10px] md:text-sm">
           <Link href="/" className="text-[12px]">
-            {store.getState().currentUser.user.id}
+            {/* {store.getState().currentUser.user.id} */}
             فروشگاه آنلاین فرش
           </Link>
         </div>
