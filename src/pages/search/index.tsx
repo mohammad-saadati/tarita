@@ -23,6 +23,12 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
       <div className="col-span-12 md:col-span-9 lg:col-span-3 relative">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-12 relative">
+            <div className="flex justify-between items-center">
+              <div className="text-sm font-semibold">فیلتر ها</div>
+              <div className="text-sm cursor-pointer">ریست کردن</div>
+            </div>
+          </div>
+          <div className="col-span-12 relative">
             <Filters filters={filters.categories} title="دسته بندی نتایج" />
           </div>
           <div className="col-span-12 relative">
