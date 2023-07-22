@@ -13,7 +13,7 @@ const Card: FC<CardProps> = ({ item }) => {
 
   return (
     <div className="">
-      <i className="icon-like"></i>
+      <i className="icon-like cursor-pointer"></i>
       <div className="flex justify-center items-center">
         <Image
           src={item.url}
