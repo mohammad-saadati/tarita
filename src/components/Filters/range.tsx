@@ -6,6 +6,7 @@ import "./range.scss";
 
 import Filters from "@/components/Filters";
 import { commaSeperator } from "@/utils/helpers";
+import { useRouter } from "next/router";
 
 type RangeProps = {
   // Define props here
@@ -14,10 +15,36 @@ type RangeProps = {
 const Range: FC<RangeProps> = () => {
   const [min, setMin] = useState(1000000);
   const [max, setMax] = useState(1000000000);
+  const router = useRouter();
 
   const handleRangeUpdate = (value: [number, number]) => {
     setMin(value[0]);
     setMax(value[1]);
+  };
+
+  const activePriceRange = () => {
+    const queryParams = new URLSearchParams();
+
+    for (const [key, value] of Object.entries(router.query)) {
+      if (Array.isArray(value)) {
+        for (const item of value) {
+          queryParams.append(key, item);
+        }
+      } else {
+        if (typeof value === "string") {
+          queryParams.set(key, value);
+        }
+      }
+    }
+
+    queryParams.set("min", min.toString());
+    queryParams.set("max", max.toString());
+
+    console.log(queryParams);
+    router.push({
+      pathname: router.pathname,
+      search: queryParams.toString(),
+    });
   };
 
   return (
@@ -45,7 +72,10 @@ const Range: FC<RangeProps> = () => {
               <div className="mr-1">تومان</div>
             </div>
           </div>
-          <div className="bg-[#333333] text-white text-center text-sm rounded-[5px] py-2 mt-6">
+          <div
+            onClick={activePriceRange}
+            className="bg-[#333333] text-white text-center text-sm rounded-[5px] py-2 mt-6 cursor-pointer"
+          >
             اعمال قیمت
           </div>
         </div>
