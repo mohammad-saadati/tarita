@@ -15,6 +15,7 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const router = useRouter();
+  
 
   const onFilterClick = (index: number) => {
     const queryParams = new URLSearchParams();
