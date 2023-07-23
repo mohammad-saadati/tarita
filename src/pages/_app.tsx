@@ -8,8 +8,6 @@ import localFont from "next/font/local";
 import "@/app/globals.css";
 // icomoon
 import "../../public/fonts/icomoon/style.css";
-// context
-import { UserProvider } from "@/contexts/UserContext";
 // store
 import { store } from "@/store";
 import { setCurrentUser, User } from "@/store/features/currentUser";
