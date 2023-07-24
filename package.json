@@ -2,7 +2,10 @@
   "name": "tarita",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mohammad-saadati.github.io/tarita",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
