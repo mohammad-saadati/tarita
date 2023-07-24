@@ -1,12 +1,14 @@
 import { GetServerSidePropsContext } from "next";
-import type { ReactElement } from "react";
+import { useRouter } from "next/router";
+import { useState, ReactElement, useEffect } from "react";
+import useSWR from "swr";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import Filters from "@/components/Filters";
 import Range from "@/components/Filters/Range";
 import Card from "@/components/Card";
 import axios from "@/utils/axios";
-
+import { getFetcher } from "@/utils/fetcher";
 interface SearchProps {
   products: {
     id: number;
@@ -22,17 +24,28 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   const [reactiveProducts, setProducts] = useState(products);
   const router = useRouter();
 
+  const { data, error, isValidating } = useSWR(`${router.asPath}`, getFetcher);
+
+  console.log(data);
+
   useEffect(() => {
-    async () => await updateData();
+    // updateData();
+    // setProducts(data);
+    console.log(data);
   }, [router]);
 
-  const updateData = async () => {
-    
+  const updateData = () => {
+    const { data, error, isLoading } = useSWR(
+      `/products?${router.asPath}`,
+      getFetcher
+    );
+
+    console.log("data", data);
   };
 
   return (
-    <div className="grid grid-cols-12 gap-8">
-      <div className="col-span-12 md:col-span-9 lg:col-span-3 relative">
+    <div className="grid grid-cols-12 lg:gap-8">
+      <div className="col-span-12 lg:col-span-3 relative">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-12 relative">
             <div className="flex justify-between items-center">
@@ -54,12 +67,11 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
           </div>
         </div>
       </div>
-      <div className="col-span-12 md:col-span-9 lg:col-span-9">
-        <div className="grid grid-cols-12 gap-8">
-          {products.map((item, index) => (
+      <div className="col-span-12 lg:col-span-9">
+        <div className="grid grid-cols-12 sm:gap-8">
           {reactiveProducts.map((item, index) => (
             <div
-              className="col-span-12 md:col-span-9 lg:col-span-3 relative"
+              className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3 relative"
               key={index}
             >
               <Card item={item} />
