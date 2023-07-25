@@ -24,6 +24,7 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   const [reactiveProducts, setProducts] = useState(products);
   const router = useRouter();
 
+  console.log(router.asPath);
   const { data, error, isValidating } = useSWR(`${router.asPath}`, getFetcher);
 
   console.log(data);
@@ -43,6 +44,12 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
     console.log("data", data);
   };
 
+  const resetFilters = (event: React.MouseEvent<HTMLElement>) => {
+    router.push({
+      pathname: "/search/",
+    });
+  };
+
   return (
     <div className="grid grid-cols-12 lg:gap-8">
       <div className="col-span-12 lg:col-span-3 relative">
@@ -50,7 +57,9 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
           <div className="col-span-12 relative">
             <div className="flex justify-between items-center">
               <div className="text-sm font-semibold">فیلتر ها</div>
-              <div className="text-sm cursor-pointer">ریست کردن</div>
+              <div className="text-sm cursor-pointer" onClick={resetFilters}>
+                ریست کردن
+              </div>
             </div>
           </div>
           <div className="col-span-12 relative">
