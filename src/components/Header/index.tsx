@@ -1,6 +1,7 @@
 import React, { ChangeEvent, KeyboardEvent, FC, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import userIcon from "@/assets/images/user.svg";
 import bagIcon from "@/assets/images/bag.svg";
 import searchNormal from "@/assets/images/search-normal.svg";
@@ -12,7 +13,8 @@ type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
   const dispatch = useAppDispatch();
-  const searchVal = useAppSelector((state) => state.search.search);
+  const [searchVal, setSearchVal] = useState("");
+  const router = useRouter();
 
   const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key !== "Enter") return;
@@ -26,6 +28,10 @@ const Header: FC<HeaderProps> = () => {
       search: queryParams.toString(),
     });
   };
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchVal(event.target.value);
   };
 
   return (
@@ -39,7 +45,7 @@ const Header: FC<HeaderProps> = () => {
         </div>
         <div className="relative">
           <input
-            onChange={handleSearch}
+            onChange={handleSearchInputChange}
             onKeyDown={handleSearch}
             className="bg-[#4A4A4A] rounded-[7px] h-[34px] text-[#D4D4D4] p-2 focus-visible:outline-none w-[150px] md:w-[400px]"
           />
