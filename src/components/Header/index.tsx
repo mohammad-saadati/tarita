@@ -1,20 +1,24 @@
-import React, { ChangeEvent, KeyboardEvent, FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import userIcon from "@/assets/images/user.svg";
 import bagIcon from "@/assets/images/bag.svg";
 import searchNormal from "@/assets/images/search-normal.svg";
-import { store } from "@/store";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setSearch } from "@/store/features/search";
+// import { store } from "@/store";
+// import { useAppDispatch, useAppSelector } from "@/store/hooks";
+// import { setSearch } from "@/store/features/search";
 
 type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
-  const dispatch = useAppDispatch();
-  const [searchVal, setSearchVal] = useState("");
+  // const dispatch = useAppDispatch();
+  const [searchVal, setSearchVal] = useState<string | null>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    if (Object.entries(router.query).length === 0) setSearchVal(null);
+  }, [router.query]);
 
   const handleSearch = (event: any) => {
     if (
