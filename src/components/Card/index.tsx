@@ -24,7 +24,7 @@ const Card: FC<CardProps> = ({ item }) => {
         />
       </div>
       <div className="mt-[30px] text-[13px] font-medium">
-        <Link href={`/product/${item.id}`}>{item.title}</Link>
+        <Link href={`/product/${item.id}/`}>{item.title}</Link>
       </div>
       <div className="my-2">
         <Rating
