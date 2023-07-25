@@ -1,4 +1,4 @@
-import React, { FC, useState, ReactElement } from "react";
+import React, { FC, useState, ReactElement, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import plus from "@/assets/images/plus.svg";
@@ -15,7 +15,10 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const router = useRouter();
-  
+
+  useEffect(() => {
+    if (Object.entries(router.query).length === 0) setActiveIndex(null);
+  }, [router.query]);
 
   const onFilterClick = (index: number) => {
     const queryParams = new URLSearchParams();
