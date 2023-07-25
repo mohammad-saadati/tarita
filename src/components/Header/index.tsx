@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC } from "react";
+import React, { ChangeEvent, KeyboardEvent, FC, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import userIcon from "@/assets/images/user.svg";
@@ -14,8 +14,18 @@ const Header: FC<HeaderProps> = () => {
   const dispatch = useAppDispatch();
   const searchVal = useAppSelector((state) => state.search.search);
 
-  const handleSearch = (ev: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearch(ev.target.value));
+  const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key !== "Enter") return;
+
+    const queryParams = new URLSearchParams();
+
+    queryParams.set("q", searchVal);
+
+    router.replace({
+      pathname: "/search/",
+      search: queryParams.toString(),
+    });
+  };
   };
 
   return (
@@ -29,8 +39,8 @@ const Header: FC<HeaderProps> = () => {
         </div>
         <div className="relative">
           <input
-            value={searchVal}
             onChange={handleSearch}
+            onKeyDown={handleSearch}
             className="bg-[#4A4A4A] rounded-[7px] h-[34px] text-[#D4D4D4] p-2 focus-visible:outline-none w-[150px] md:w-[400px]"
           />
           <div className="absolute left-2 top-2">
