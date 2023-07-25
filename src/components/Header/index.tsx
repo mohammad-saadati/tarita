@@ -16,8 +16,13 @@ const Header: FC<HeaderProps> = () => {
   const [searchVal, setSearchVal] = useState("");
   const router = useRouter();
 
-  const handleSearch = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key !== "Enter") return;
+  const handleSearch = (event: any) => {
+    if (
+      (event.type === "keydown" && event.key !== "Enter") || // Check for Enter key press
+      (event.type === "click" && event.button !== 0) // Check for left mouse click
+    ) {
+      return;
+    }
 
     const queryParams = new URLSearchParams();
 
@@ -56,6 +61,7 @@ const Header: FC<HeaderProps> = () => {
               width={20}
               height={20}
               className="cursor-pointer"
+              onClick={handleSearch}
             />
           </div>
         </div>
