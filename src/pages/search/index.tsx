@@ -113,9 +113,17 @@ Search.getLayout = (page: ReactElement) =>
   identifier(page, LayoutTypes.default);
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { query } = context;
+
+  const queryString = Object.keys(query)
+    .map(
+      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`
+    )
+    .join("&");
+
   try {
     const [products, filters] = await Promise.all([
-      axios.get(`/products?_page=1&_limit=20`),
+      axios.get(`/products?_page=1&_limit=20&${queryString}`),
       axios.get(`/filters`),
     ]);
 
