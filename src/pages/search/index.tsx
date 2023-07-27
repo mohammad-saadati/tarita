@@ -1,14 +1,13 @@
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 import { useState, ReactElement, useEffect } from "react";
-import useSWR from "swr";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import Filters from "@/components/Filters";
 import Range from "@/components/Filters/Range";
 import Card from "@/components/Card";
 import axios from "@/utils/axios";
-import { getFetcher } from "@/utils/fetcher";
+
 interface SearchProps {
   products: {
     id: number;
@@ -25,10 +24,7 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  console.log(router.asPath);
-  const { data, error, isValidating } = useSWR(`${router.asPath}`, getFetcher);
-
-  console.log(data);
+  console.log(router.query);
 
   useEffect(() => {
     const fn = async () => await updateData();
