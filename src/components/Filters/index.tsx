@@ -15,9 +15,21 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const router = useRouter();
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   useEffect(() => {
     if (Object.entries(router.query).length === 0) setActiveIndex(null);
+
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      const cat = filters?.[0].cat;
+
+      const matchedIndex = filters?.findIndex(
+        (filter) => filter.value === router.query?.[cat]
+      );
+
+      if (matchedIndex != -1) setActiveIndex(matchedIndex);
+    }
   }, [router.query]);
 
   const onFilterClick = (index: number) => {
@@ -37,7 +49,7 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
     }
     if (filters?.[index]?.cat)
       queryParams.set(filters[index].cat, filters[index].value);
-      
+
     router.push({
       pathname: router.pathname,
       search: queryParams.toString(),
