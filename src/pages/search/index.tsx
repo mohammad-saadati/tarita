@@ -23,6 +23,7 @@ interface SearchProps {
 const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   const [reactiveProducts, setProducts] = useState(products);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   console.log(router.asPath);
   const { data, error, isValidating } = useSWR(`${router.asPath}`, getFetcher);
@@ -35,15 +36,32 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
     console.log(data);
   }, [router]);
 
-  const updateData = () => {
-    const { data, error, isLoading } = useSWR(
-      `/products?${router.asPath}`,
-      getFetcher
-    );
+  const updateData = async () => {
+    if (loading) return;
 
-    console.log("data", data);
+    console.log("executed");
+    const queryString = Object.keys(router.query)
+      .map(
+        (key) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(router.query[key])}`
+      )
+      .join("&");
+
+    const endpoint = `products?${queryString}`;
+
+    try {
+      setLoading(true);
+
+      const res = await axios.get(endpoint);
+      const { data } = res;
+
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
-
   const resetFilters = (event: React.MouseEvent<HTMLElement>) => {
     router.push({
       pathname: "/search/",
