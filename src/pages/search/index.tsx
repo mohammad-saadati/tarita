@@ -31,10 +31,9 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   console.log(data);
 
   useEffect(() => {
-    // updateData();
-    // setProducts(data);
-    console.log(data);
-  }, [router]);
+    const fn = async () => await updateData();
+    fn();
+  }, [router.query]);
 
   const updateData = async () => {
     if (loading) return;
