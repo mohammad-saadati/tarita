@@ -30,12 +30,19 @@ const Header: FC<HeaderProps> = () => {
 
     const queryParams = new URLSearchParams();
 
-    queryParams.set("q", searchVal);
+    if (searchVal && searchVal !== queryParams.get("q")) {
+      queryParams.set("q", searchVal);
 
-    router.replace({
-      pathname: "/search/",
-      search: queryParams.toString(),
-    });
+      router.replace({
+        pathname: "/search/",
+        search: queryParams.toString(),
+      });
+    } else {
+      router.replace({
+        pathname: "/search/",
+        search: null,
+      });
+    }
   };
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
