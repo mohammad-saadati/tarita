@@ -37,6 +37,7 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
     }
     if (filters?.[index]?.cat)
       queryParams.set(filters[index].cat, filters[index].value);
+      
     router.push({
       pathname: router.pathname,
       search: queryParams.toString(),
