@@ -23,10 +23,15 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   const [reactiveProducts, setProducts] = useState(products);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [isFirstLoading, setIsFirstLoading] = useState(true);
 
   console.log(router.query);
 
   useEffect(() => {
+    if (isFirstLoading) {
+      setIsFirstLoading(false);
+      return;
+    }
     const fn = async () => await updateData();
     fn();
   }, [router.query]);
@@ -34,7 +39,6 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   const updateData = async () => {
     if (loading) return;
 
-    console.log("executed");
     const queryString = Object.keys(router.query)
       .map(
         (key) =>
