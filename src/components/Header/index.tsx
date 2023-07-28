@@ -77,13 +77,15 @@ const Header: FC<HeaderProps> = () => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <Image
-            src={userIcon}
-            alt="user"
-            width={20}
-            height={20}
-            className="cursor-pointer"
-          />
+          <Link href="/dashboard" className="text-[12px]">
+            <Image
+              src={userIcon}
+              alt="user"
+              width={20}
+              height={20}
+              className="cursor-pointer"
+            />
+          </Link>
           <Image
             src={bagIcon}
             alt="user"
