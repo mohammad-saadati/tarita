@@ -5,14 +5,10 @@ import { useRouter } from "next/router";
 import userIcon from "@/assets/images/user.svg";
 import bagIcon from "@/assets/images/bag.svg";
 import searchNormal from "@/assets/images/search-normal.svg";
-// import { store } from "@/store";
-// import { useAppDispatch, useAppSelector } from "@/store/hooks";
-// import { setSearch } from "@/store/features/search";
 
 type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
-  // const dispatch = useAppDispatch();
   const [searchVal, setSearchVal] = useState<string | null>(null);
   const router = useRouter();
 
@@ -22,8 +18,8 @@ const Header: FC<HeaderProps> = () => {
 
   const handleSearch = (event: any) => {
     if (
-      (event.type === "keydown" && event.key !== "Enter") || // Check for Enter key press
-      (event.type === "click" && event.button !== 0) // Check for left mouse click
+      (event.type === "keydown" && event.key !== "Enter") ||
+      (event.type === "click" && event.button !== 0)
     ) {
       return;
     }
