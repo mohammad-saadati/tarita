@@ -9,10 +9,6 @@ type OrdersProps = {
 const Orders: FC<OrdersProps> = () => {
   return (
     <>
-      <div className="flex justify-betwee items-center">
-        <div>سفارش</div>
-        <div>مشاهده همه</div>
-      </div>
       <table className="w-full rounded-lg">
         <thead className="bg-[#F2F2F2] rounded-lg">
           <tr className="p-1">
