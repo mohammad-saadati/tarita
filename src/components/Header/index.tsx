@@ -5,10 +5,13 @@ import { useRouter } from "next/router";
 import userIcon from "@/assets/images/user.svg";
 import bagIcon from "@/assets/images/bag.svg";
 import searchNormal from "@/assets/images/search-normal.svg";
+import { useAppSelector } from "@/store/hooks";
 
 type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
+  const store = useAppSelector((store) => store.currentUser)
+  console.log(store)
   const [searchVal, setSearchVal] = useState<string | null>(null);
   const router = useRouter();
 
