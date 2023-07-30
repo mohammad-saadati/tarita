@@ -4,16 +4,28 @@ import { FC, useState } from "react";
 import { commaSeperator } from "@/utils/helpers";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import heartFilled from "@/assets/images/heartFilled.svg";
 
 type CardProps = {
   item: { id: number; url: string; title: string; price: number; rate: number };
+  isLieked?: boolean;
 };
-const Card: FC<CardProps> = ({ item }) => {
+const Card: FC<CardProps> = ({ item, isLieked }) => {
   const [rating, setRating] = useState(2);
 
   return (
     <div className="">
-      <i className="icon-like cursor-pointer"></i>
+      {isLieked ? (
+        <Image
+          src={heartFilled}
+          alt=""
+          width={20}
+          height={20}
+        />
+      ) : (
+        <i className="icon-like cursor-pointer"></i>
+      )}
+
       <div className="flex justify-center items-center">
         <Image
           src={item.url}
