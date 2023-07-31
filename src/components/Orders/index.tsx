@@ -26,7 +26,7 @@ const Orders: FC<OrdersProps> = () => {
             <td className="p-3">{commaSeperator(25500200)}</td>
             <td className="p-3 text-[#F2994A]">در حال پردازش</td>
             <td className="p-3">
-              <Link href="/order">مشاهده جزییات</Link>
+              <Link href="/orders/1">مشاهده جزییات</Link>
             </td>
           </tr>
           <tr>
@@ -35,7 +35,7 @@ const Orders: FC<OrdersProps> = () => {
             <td className="p-3">{commaSeperator(25500200)}</td>
             <td className="p-3 text-[#27AE60]">تحویل داده شده</td>
             <td className="p-3">
-              <Link href="/order">مشاهده جزییات</Link>
+              <Link href="/orders/1">مشاهده جزییات</Link>
             </td>
           </tr>
           <tr>
@@ -44,7 +44,7 @@ const Orders: FC<OrdersProps> = () => {
             <td className="p-3">{commaSeperator(25500200)}</td>
             <td className="p-3">ارسال شده</td>
             <td className="p-3">
-              <Link href="/order">مشاهده جزییات</Link>
+              <Link href="/orders/1">مشاهده جزییات</Link>
             </td>
           </tr>
         </tbody>
