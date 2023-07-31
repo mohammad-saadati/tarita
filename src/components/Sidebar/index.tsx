@@ -36,7 +36,7 @@ const profilePages = [
     inactiveIcon: likeFilled,
   },
   {
-    title: "علاقه مندی ها",
+    title: "آدرس ها",
     link: "addresses",
     activeIcon: location,
     inactiveIcon: locationFilled,
@@ -61,7 +61,7 @@ const Sidebar: FC<SidebarProps> = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col justify-center items-center border rounded pt-[60px] px-5">
+    <div className="flex flex-col justify-center items-center border rounded pt-[60px] px-5 sticky top-5">
       <Image
         src={avatar}
         width={90}
