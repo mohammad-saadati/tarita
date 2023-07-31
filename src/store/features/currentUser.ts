@@ -5,6 +5,7 @@ export interface User {
   name: string;
   avatar: string;
   bookmarked: Product[];
+  bookmarkeds: Product[];
 }
 interface currentUserState {
   user: User;
@@ -23,6 +24,7 @@ const initialState: currentUserState = {
     name: "",
     avatar: "",
     bookmarked: [],
+    bookmarkeds: [],
   },
 };
 
