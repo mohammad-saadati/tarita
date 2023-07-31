@@ -15,8 +15,8 @@ const Dashboard = ({ children }: layoutProps) => {
         <StoreProvider>
           <Header />
           <div className="container my-[70px] md:my-[100px]">
-            <div className="grid grid-cols-12 gap-4">
-              <div className="col-span-12 md:col-span-9 lg:col-span-3">
+            <div className="grid grid-cols-12 gap-4 relative">
+              <div className="col-span-12 md:col-span-9 lg:col-span-3 sticky top-[1rem]">
                 <Sidebar />
               </div>
               <div className="col-span-12 md:col-span-9 lg:col-span-9">
