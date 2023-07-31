@@ -8,14 +8,14 @@ import heartFilled from "@/assets/images/heartFilled.svg";
 
 type CardProps = {
   item: { id: number; url: string; title: string; price: number; rate: number };
-  isLieked?: boolean;
+  isLiked?: boolean;
 };
-const Card: FC<CardProps> = ({ item, isLieked }) => {
+const Card: FC<CardProps> = ({ item, isLiked }) => {
   const [rating, setRating] = useState(2);
 
   return (
     <div className="">
-      {isLieked ? (
+      {isLiked ? (
         <Image
           src={heartFilled}
           alt=""
