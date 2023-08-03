@@ -1,13 +1,20 @@
 import Image from "next/image";
 import { NextPageWithLayout } from "./_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
+import { store } from "@/store";
 import plusWhite from "@/assets/images/plus-white.svg";
+import starFilled from "@/assets/images/starFilled.svg";
+import starEmpty from "@/assets/images/starEmpty.svg";
+import deleteRounded from "@/assets/images/deleteRounded.svg";
+import pencilRounded from "@/assets/images/pencilRounded.svg";
 
 interface AddressesProps {
   data: {};
 }
 
 const Addresses: NextPageWithLayout<AddressesProps> = ({ data }) => {
+  const addresses = store.getState().currentUser.user.addresses;
+
   return (
     <>
       <div className="flex justify-end">
@@ -16,11 +23,39 @@ const Addresses: NextPageWithLayout<AddressesProps> = ({ data }) => {
           <div className="mr-2">افزودن آدرس جدید</div>
         </button>
       </div>
-      <div className="grid grid-cols-12 gap-4">
-        
-        <div className="col-span-12">
-
-        </div>
+      <div className="grid grid-cols-12">
+        {addresses.map((address, index) => (
+          <div className="col-span-12 mt-10" key={index}>
+            <div className="border-[#F2F2F2] border-[2px] p-3.5 rounded-[7px]">
+              <div className="flex justify-between items-center">
+                <div className="font-bold text-sm">{address.name}</div>
+                {address.isActive ? (
+                  <Image src={starFilled} width={20} height={20} alt="" />
+                ) : (
+                  <Image src={starEmpty} width={20} height={20} alt="" />
+                )}
+              </div>
+              <div className="text-sm my-5">{address.location}</div>
+              <div className="flex justify-between items-center">
+                <div className="text-sm">{address.postalCode} کدپستی:</div>
+                <div className="flex items-center">
+                  <Image
+                    src={pencilRounded}
+                    width={34}
+                    height={34}
+                    alt="edit-address"
+                  />
+                  <Image
+                    src={deleteRounded}
+                    width={34}
+                    height={34}
+                    alt="remove-address"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );
