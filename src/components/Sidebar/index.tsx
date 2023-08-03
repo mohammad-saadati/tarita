@@ -37,13 +37,13 @@ const profilePages = [
   },
   {
     title: "آدرس ها",
-    link: "addresses",
+    link: "/addresses",
     activeIcon: location,
     inactiveIcon: locationFilled,
   },
   {
     title: "حساب کاربری",
-    link: "profile",
+    link: "/profile",
     activeIcon: user,
     inactiveIcon: userFilled,
   },
