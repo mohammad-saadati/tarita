@@ -74,7 +74,7 @@ const Sidebar: FC<SidebarProps> = () => {
       </div>
       <ul className="w-full">
         {profilePages.map((item, index) => (
-          <li>
+          <li key={index}>
             <Link
               href={item.link}
               className={`flex justify-between items-center  ${
