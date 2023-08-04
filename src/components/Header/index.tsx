@@ -10,8 +10,8 @@ import { useAppSelector } from "@/store/hooks";
 type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
-  const store = useAppSelector((store) => store.currentUser)
-  console.log(store)
+  const store = useAppSelector((store) => store.currentUser);
+  console.log(store);
   const [searchVal, setSearchVal] = useState<string | null>(null);
   const router = useRouter();
 
@@ -85,13 +85,15 @@ const Header: FC<HeaderProps> = () => {
               className="cursor-pointer"
             />
           </Link>
-          <Image
-            src={bagIcon}
-            alt="user"
-            width={20}
-            height={20}
-            className="mr-5 cursor-pointer"
-          />
+          <Link href="/cart" className="text-[12px]">
+            <Image
+              src={bagIcon}
+              alt="user"
+              width={20}
+              height={20}
+              className="mr-5 cursor-pointer"
+            />
+          </Link>
         </div>
       </div>
     </div>
