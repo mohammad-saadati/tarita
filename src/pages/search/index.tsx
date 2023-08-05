@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState, ReactElement, useEffect } from "react";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
-import Range from "@/components/Filters/Range";
+import Range from "@/components/Filters/Rangetest";
 import Filters from "@/components/Filters/index";
 import Card from "@/components/Card";
 import axios from "@/utils/axios";
