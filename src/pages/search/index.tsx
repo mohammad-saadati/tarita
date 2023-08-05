@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState, ReactElement, useEffect } from "react";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
-import Range from "@/components/Filters/Rangetest";
+import Rangetest from "@/components/Filters/Rangetest";
 import Filters from "@/components/Filters/index";
 import Card from "@/components/Card";
 import axios from "@/utils/axios";
@@ -91,7 +91,7 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
             <Filters filters={filters.brands} title="برند" />
           </div>
           <div className="col-span-12 relative">
-            <Range />
+            <Rangetest />
           </div>
         </div>
       </div>
@@ -119,7 +119,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const queryString = Object.keys(query)
     .map(
-      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key] as string)}`
+      (key) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(query[key] as string)}`
     )
     .join("&");
 
