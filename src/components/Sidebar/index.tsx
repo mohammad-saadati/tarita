@@ -49,7 +49,7 @@ const profilePages = [
   },
   {
     title: "خروج",
-    link: "logout",
+    link: "login",
     activeIcon: logout,
     inactiveIcon: null,
   },
