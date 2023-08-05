@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ReactElement } from "react";
-import { NextPageWithLayout } from "./_app";
+import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import { store } from "@/store";
 import { commaSeperator } from "@/utils/helpers";
@@ -9,7 +9,9 @@ import minusWhite from "@/assets/images/minusWhite.svg";
 import removeCircle from "@/assets/images/removeCircle.svg";
 import checkedCircle from "@/assets/images/checkedCircle.svg";
 import certifiedMail from "@/assets/images/certified-mail.svg";
-import expressMail from "@/assets/images/express-mail.svg";
+import cardToCard from "@/assets/images/card-to-card.svg";
+import mellat from "@/assets/images/mellat.svg";
+import saman from "@/assets/images/saman.svg";
 
 interface CartProps {
   data: {};
@@ -122,7 +124,7 @@ const Cart: NextPageWithLayout<CartProps> = ({ data }) => {
             </button>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-8 border px-5 py-8">
+        <div className="col-span-12 md:col-span-8 border rounded-[7px] px-5 py-8">
           <div className="flex justify-between items-center">
             <div className="text-sm font-bold">آدرس تحویل سفارش</div>
             <div className="text-sm font-medium">ارسال به یک آدرس دیگر</div>
@@ -154,8 +156,8 @@ const Cart: NextPageWithLayout<CartProps> = ({ data }) => {
             ))}
           </div>
         </div>
-        <div className="col-span-12 md:col-span-8 border px-5 py-8">
-          <div className="flex justify-between items-center">
+        <div className="col-span-12 md:col-span-8 border rounded-[7px] px-5 py-8">
+          <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-bold">انتخاب شیوه ارسال</div>
           </div>
           <div className="grid grid-cols-12 gap-4">
@@ -214,6 +216,50 @@ const Cart: NextPageWithLayout<CartProps> = ({ data }) => {
                         <div>{commaSeperator(25000)}</div>
                         <div>تومان</div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-span-12 md:col-span-8 border rounded-[7px] px-5 py-8">
+          <div className="flex justify-between items-center mb-3">
+            <div className="text-sm font-bold">روش پرداخت سفارش</div>
+          </div>
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-6">
+              <div className="border-[#F2F2F2] border-[2px] p-3.5 rounded-[7px]">
+                <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center">
+                    <Image src={mellat} width={45} height={45} alt="mellat" />
+                    <div className="flex flex-col text-sm font-medium w-full mr-2">
+                      پرداخت انلاین بانک ملت
+                    </div>
+                  </div>
+                  <Image src={checkedCircle} width={20} height={20} alt="" />
+                </div>
+              </div>
+            </div>
+            <div className="col-span-6">
+              <div className="border-[#F2F2F2] border-[2px] p-3.5 rounded-[7px]">
+                <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center">
+                    <Image src={saman} width={45} height={45} alt="mellat" />
+                    <div className="flex flex-col text-sm font-medium w-full mr-2">
+                      پرداخت انلاین بانک ملت
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-6">
+              <div className="border-[#F2F2F2] border-[2px] p-3.5 rounded-[7px]">
+                <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center">
+                    <Image src={cardToCard} width={45} height={45} alt="mellat" />
+                    <div className="flex flex-col text-sm font-medium w-full mr-2">
+                      پرداخت انلاین بانک ملت
                     </div>
                   </div>
                 </div>
