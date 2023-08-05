@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { NextPageWithLayout } from "./_app";
+import { ReactElement } from "react";
+import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import { store } from "@/store";
 import plusWhite from "@/assets/images/plus-white.svg";

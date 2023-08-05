@@ -1,4 +1,5 @@
-import { NextPageWithLayout } from "./_app";
+import { ReactElement } from "react";
+import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 //
 import OrdersTable from "@/components/Orders";
