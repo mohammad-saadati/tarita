@@ -40,10 +40,12 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
     if (loading) return;
 
     const queryString = Object.keys(router.query)
-      .map(
-        (key) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(router.query[key])}`
-      )
+      .map((key) => {
+        if (router.query[key])
+          return `${encodeURIComponent(key)}=${encodeURIComponent(
+            router.query[key] as string
+          )}`;
+      })
       .join("&");
 
     const endpoint = `products?${queryString}`;
@@ -117,7 +119,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const queryString = Object.keys(query)
     .map(
-      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`
+      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key] as string)}`
     )
     .join("&");
 
