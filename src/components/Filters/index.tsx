@@ -25,10 +25,10 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
       const cat = filters?.[0].cat;
 
       const matchedIndex = filters?.findIndex(
-        (filter) => filter.value === router.query?.[cat]
+        (filter) => filter.value === (cat && router.query?.[cat])
       );
 
-      if (matchedIndex != -1) setActiveIndex(matchedIndex);
+      if (matchedIndex && matchedIndex != -1) setActiveIndex(matchedIndex);
     }
   }, [router.query]);
 
