@@ -67,7 +67,7 @@ const Footer: FC<FooterProps> = () => {
                   <p className="text-xs font-bold mb-4">لینک های مفید</p>
                   <ul className="text-xs">
                     <li>
-                      <Link href="contact-us">تماس با ما</Link>
+                      <Link href="/contact-us">تماس با ما</Link>
                     </li>
                     <li>حریم خصوصی</li>
                   </ul>
