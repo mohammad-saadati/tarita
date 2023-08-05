@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { FC } from "react";
 import linkedin from "@/assets/images/linkedin.svg";
 import twitter from "@/assets/images/twitter.svg";
@@ -24,7 +25,9 @@ const Footer: FC<FooterProps> = () => {
             </div>
             <div className="md:flex justify-between border-b mt-[30px] pb-4 mb-4">
               <div className="flex flex-col ml-3 mb-5">
-                <div className="text-xs font-bold mb-4 whitespace-nowrap">اطلاعات تماس</div>
+                <div className="text-xs font-bold mb-4 whitespace-nowrap">
+                  اطلاعات تماس
+                </div>
                 <div className="mb-2">
                   <div className="text-xs">آدرس:</div>
                   <div></div>
@@ -63,7 +66,9 @@ const Footer: FC<FooterProps> = () => {
                 <div className="flex flex-col ml-12">
                   <p className="text-xs font-bold mb-4">لینک های مفید</p>
                   <ul className="text-xs">
-                    <li>تماس با ما</li>
+                    <li>
+                      <Link href="contact-us">تماس با ما</Link>
+                    </li>
                     <li>حریم خصوصی</li>
                   </ul>
                 </div>
