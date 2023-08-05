@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useState, ReactElement, useEffect } from "react";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
-import Filters from "@/components/Filters";
-import Range from "@/components/Filters/Range.tsx";
+import Range from "@/components/Filters/Range";
+import Filters from "@/components/Filters/index";
 import Card from "@/components/Card";
 import axios from "@/utils/axios";
 
