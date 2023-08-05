@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 // @ts-ignore
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
-import "./range.scss";
+import "./rangeStyle.scss";
 
 import Filters from "@/components/Filters";
 import { commaSeperator } from "@/utils/helpers";
