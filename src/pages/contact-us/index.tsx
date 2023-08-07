@@ -92,8 +92,8 @@ const ContactUs: NextPageWithLayout<ContactUsProps> = () => {
         <Map
           mapboxAccessToken="pk.eyJ1IjoibW9oYW1tYWQtc2FhZGF0aSIsImEiOiJja2NkcjZjNWcwMTkyMnFvMHBlcDZ4ZDB0In0.FO-SV4qJdDw2lcLaMTgr1A"
           initialViewState={{
-            longitude: -122.4,
-            latitude: 37.8,
+            longitude: 51.338716380180486,
+            latitude: 35.69937638748445,
             zoom: 14,
           }}
           style={{ width: "100%", height: 400 }}
