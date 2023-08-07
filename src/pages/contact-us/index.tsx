@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
+import Map from "react-map-gl";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 
 interface ContactUsProps {}
@@ -86,6 +87,19 @@ const ContactUs: NextPageWithLayout<ContactUsProps> = () => {
             </div>
           </form>
         </div>
+      </div>
+      <div className="w-full mt-[100px]">
+        <Map
+          mapboxAccessToken="pk.eyJ1IjoibW9oYW1tYWQtc2FhZGF0aSIsImEiOiJja2NkcjZjNWcwMTkyMnFvMHBlcDZ4ZDB0In0.FO-SV4qJdDw2lcLaMTgr1A"
+          initialViewState={{
+            longitude: -122.4,
+            latitude: 37.8,
+            zoom: 14,
+          }}
+          style={{ width: "100%", height: 400 }}
+          mapStyle="mapbox://styles/mapbox/streets-v9"
+          attributionControl={false}
+        />
       </div>
     </div>
   );
