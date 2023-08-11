@@ -12,7 +12,7 @@ type FooterProps = {
 
 const Footer: FC<FooterProps> = () => {
   return (
-    <div className="bg-[#F2F2F2]">
+    <div className="relative z-[1] bg-[#F2F2F2]">
       <div className="py-[30px] container">
         <div>
           <div className="text-2xl font-bold">فروشگاه آنلاین</div>
@@ -66,19 +66,41 @@ const Footer: FC<FooterProps> = () => {
                 <div className="flex flex-col ml-12">
                   <p className="text-xs font-bold mb-4">لینک های مفید</p>
                   <ul className="text-xs">
-                    <li>
-                      <Link href="/contact-us">تماس با ما</Link>
+                    <li className="mb-1">
+                      <Link href="/contact-us" className="cursor-pointer">
+                        تماس با ما
+                      </Link>
                     </li>
-                    <li>حریم خصوصی</li>
+                    <li className="mb-1">
+                      <Link href="/privacy" className="cursor-pointer">
+                        حریم خصوصی
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 <div className="flex flex-col ml-12">
                   <p className="text-xs font-bold mb-4">کاربر</p>
                   <ul className="text-xs">
-                    <li>حساب کاربری</li>
-                    <li>سبد خرید</li>
-                    <li>لیست مورد علاقه</li>
-                    <li>پیگیری سفارش</li>
+                    <li className="mb-1">
+                      <Link href="/dashboard" className="cursor-pointer">
+                        حساب کاربری
+                      </Link>
+                    </li>
+                    <li className="mb-1">
+                      <Link href="/cart" className="cursor-pointer">
+                        سبد خرید
+                      </Link>
+                    </li>
+                    <li className="mb-1">
+                      <Link href="/bookmarks" className="cursor-pointer">
+                        لیست مورد علاقه
+                      </Link>
+                    </li>
+                    <li className="mb-1">
+                      <Link href="/orders" className="cursor-pointer">
+                        پیگیری سفارش
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 <div className="flex flex-col">
