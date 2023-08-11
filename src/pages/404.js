@@ -1,8 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import Image404 from "@/assets/images/404Image.svg";
 
 export default function Custom404() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.push("/");
+    }, 6000);
+
+    return () => {
+      console.log("cleared....................");
+      clearTimeout(timer);
+    };
+  });
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="flex justify-center items-start">
@@ -14,7 +29,7 @@ export default function Custom404() {
           </div>
           <div className="text-[#828282] text-sm my-3">
             این صفحه پس از
-            <span className="text-black">10 ثانیه </span>
+            <span className="text-black">6 ثانیه </span>
             بسته خواهد شد.
           </div>
           <Link
