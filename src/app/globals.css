@@ -39,6 +39,7 @@
 } */
 body {
   direction: rtl;
+  font-family: IRANSans;
 }
 
 .swiper-wrapper {
