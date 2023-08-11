@@ -4,17 +4,26 @@ import Image404 from "@/assets/images/404Image.svg";
 
 export default function Custom404() {
   return (
-    <div class="flex justify-center items-center h-screen">
-      <Image src={Image404} width={153} height={153} alt="404-image" />
-      <div>
-        <div>404</div>
-        <div>صفحه ی مورد نظر یافت نشد.</div>
+    <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-start">
+        <Image src={Image404} width={153} height={153} alt="404-image" />
         <div>
-          این صفحه پس از
-          <span>10 ثانیه</span>
-          بسته خواهد شد.
+          <div className="text-5xl font-bold">404</div>
+          <div className="text-lg font-bold my-3">
+            صفحه ی مورد نظر یافت نشد.
+          </div>
+          <div className="text-[#828282] text-sm my-3">
+            این صفحه پس از
+            <span className="text-black">10 ثانیه </span>
+            بسته خواهد شد.
+          </div>
+          <Link
+            href="/"
+            className="flex justify-center items-center font-medium text-white text-xs bg-[#333333] w-[166px] h-[48px] rounded-[7px] mt-20"
+          >
+            رفتن به صفحه ی اصلی
+          </Link>
         </div>
-        <Link href="/" className="text-white bg-[#333333]">رفتن به صفحه ی اصلی</Link>
       </div>
     </div>
   );
