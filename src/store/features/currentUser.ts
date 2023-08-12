@@ -54,8 +54,12 @@ const currentUser = createSlice({
     setCurrentUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
+    setCardItemCount: (state, action: PayloadAction<User>) => {
+      if (action.payload.value >= 1)
+        state.user.cartItems[action.payload.index].count = action.payload.value;
+    },
   },
 });
 
-export const { setCurrentUser } = currentUser.actions;
+export const { setCurrentUser, setCardItemCount } = currentUser.actions;
 export default currentUser.reducer;
