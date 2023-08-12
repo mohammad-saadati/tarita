@@ -11,7 +11,7 @@ type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
   const store = useAppSelector((store) => store.currentUser);
-  console.log(store);
+
   const [searchVal, setSearchVal] = useState<string | null>(null);
   const router = useRouter();
 
@@ -27,21 +27,26 @@ const Header: FC<HeaderProps> = () => {
       return;
     }
 
-    const queryParams = new URLSearchParams();
+    router.replace({
+      pathname: "/search/",
+      search: null,
+    });
 
-    if (searchVal && searchVal !== queryParams.get("q")) {
-      queryParams.set("q", searchVal);
+    // const queryParams = new URLSearchParams();
 
-      router.replace({
-        pathname: "/search/",
-        search: queryParams.toString(),
-      });
-    } else {
-      router.replace({
-        pathname: "/search/",
-        search: null,
-      });
-    }
+    // if (searchVal && searchVal !== queryParams.get("q")) {
+    //   queryParams.set("q", searchVal);
+
+    //   router.replace({
+    //     pathname: "/search/",
+    //     search: queryParams.toString(),
+    //   });
+    // } else {
+    //   router.replace({
+    //     pathname: "/search/",
+    //     search: null,
+    //   });
+    // }
   };
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
