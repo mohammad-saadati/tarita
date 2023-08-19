@@ -111,7 +111,9 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
                     <Image src={slide.url} fill={true} alt={slide.title} />
                   </div>
                 </div>
-                <div className="text-[14px] md:text-[16px]">{slide.title}</div>
+                <div className="text-[14px] whitespace-nowrap">
+                  {slide.title}
+                </div>
               </div>
             )
           )}
