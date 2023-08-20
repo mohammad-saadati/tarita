@@ -1,7 +1,5 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
 // swiper core
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 // swiper modules
 import {
   Navigation,
