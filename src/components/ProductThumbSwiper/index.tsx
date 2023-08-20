@@ -26,16 +26,10 @@ const ProductThumbSwiper: FC<ProductThumbSwiperProps> = ({
 
   const renderImages = (slide: string, index: number) => {
     return (
-      <div>
-        <SwiperSlide>
+      <div key={slide}>
+        <SwiperSlide key={slide}>
           <div className="relative w-[340px] h-[320px] md:w-[370px] md:h-[370px] mx-auto">
-            <Image
-              src={slide}
-              key={index}
-              alt=""
-              fill={true}
-              className="object-contain"
-            />
+            <Image src={slide} alt="" fill={true} className="object-contain" />
           </div>
         </SwiperSlide>
       </div>
@@ -43,12 +37,11 @@ const ProductThumbSwiper: FC<ProductThumbSwiperProps> = ({
   };
   const renderThumbs = (slide: photo, index: number) => {
     return (
-      <div className="flex justify-center items-center">
-        <SwiperSlide className="thumbs-slide border-[1px] border-[#E0E0E0] rounded-[10px] cursor-pointer">
+      <div key={index} className="flex justify-center items-center">
+        <SwiperSlide key={index} className="thumbs-slide border-[1px] border-[#E0E0E0] rounded-[10px] cursor-pointer">
           <div className="flex justify-center items-center">
             <Image
               src={slide.url}
-              key={index}
               alt=""
               width={slide.width}
               height={slide.height}
