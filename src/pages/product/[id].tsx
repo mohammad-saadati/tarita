@@ -165,7 +165,7 @@ Product.getLayout = (page: ReactElement) =>
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
-    const res = await axios.get(`/product/${context.params?.id}`);
+    const res = await axios.get(`/product/1`);
     const { data } = res;
     console.log("***ddddd*", context.params?.id);
     return { props: { data } };
