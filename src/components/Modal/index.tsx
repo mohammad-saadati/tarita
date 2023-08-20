@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 interface ModalProps {
-  children: React.ReachElement;
+  children: React.ReactElement;
 }
 const Modal: FC<ModalProps> = ({ children }) => {
   return (
