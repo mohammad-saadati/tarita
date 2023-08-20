@@ -251,8 +251,8 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <p className="font-bold">محبوب ترین برند ها</p>
         <div className="flex justify-start md:justify-center mb-[70px] mt-4 overflow-y-hidden overflow-x-auto border border-[#F2F2F2] rounded-[10px] p-8">
           {data?.brands?.map((brand, index) => (
-            <div className="relative flex flex-col justify-between items-center text-center mx-8 ">
-              <div className="over-flow-x" key={index}>
+            <div className="relative flex flex-col justify-between items-center text-center mx-8 " key={index}>
+              <div className="over-flow-x">
                 <Image
                   src={brand?.url}
                   width={brand.width}
