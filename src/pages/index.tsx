@@ -68,13 +68,13 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
   ) => {
     return (
       <SwiperSlide key={index} className="w-auto">
-        <Card item={slide} openLikeModal={modalToggler}/>
+        <Card item={slide} openLikeModal={modalToggler} />
       </SwiperSlide>
     );
   };
 
   const modalToggler = () => {
-    setShowLikeModal(true);
+    setShowLikeModal(!showLikeModal);
   };
 
   return (
