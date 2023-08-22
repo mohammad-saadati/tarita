@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useState } from "react";
-import Modal from "@/components/Modal";
 import { commaSeperator } from "@/utils/helpers";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
@@ -10,23 +9,18 @@ import heartFilled from "@/assets/images/heartFilled.svg";
 type CardProps = {
   item: { id: number; url: string; title: string; price: number; rate: number };
   isLiked?: boolean;
+  openLikeModal: () => void;
 };
-const Card: FC<CardProps> = ({ item, isLiked }) => {
+const Card: FC<CardProps> = ({ item, isLiked, openLikeModal }) => {
   const [rating, setRating] = useState(2);
-  const [showLikeModal, setShowLikeModal] = useState(false);
-
-  const handleLike = () => {
-    setShowLikeModal(true);
-    // logic to check if user is looged in
-  };
 
   return (
     <div>
-      <div className="">
+      <div>
         {isLiked ? (
           <Image alt="" width={20} height={20} src={heartFilled} />
         ) : (
-          <i onClick={handleLike} className="icon-like cursor-pointer"></i>
+          <i onClick={openLikeModal} className="icon-like cursor-pointer"></i>
         )}
 
         <div className="flex justify-center items-center">
@@ -62,7 +56,6 @@ const Card: FC<CardProps> = ({ item, isLiked }) => {
           </div>
         </div>
       </div>
-      {showLikeModal && <Modal>modalddddddddddddddddddddddddddddddddddddddddddddddd</Modal>}
     </div>
   );
 };
