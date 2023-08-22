@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { NextPageWithLayout } from "./_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 //
 import Slider from "@/components/Slider";
 import Card from "@/components/Card";
+import Modal from "@/components/Modal";
 //
 import axios from "@/utils/axios";
 //
@@ -26,6 +27,8 @@ interface HomeProps {
 }
 
 const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
+  const [showLikeModal, setShowLikeModal] = useState(false);
+
   const renderBannerSlides = (slide: { url: string }, index: number) => {
     return (
       <SwiperSlide key={index}>
@@ -65,9 +68,13 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
   ) => {
     return (
       <SwiperSlide key={index} className="w-auto">
-        <Card item={slide} />
+        <Card item={slide} openLikeModal={modalToggler}/>
       </SwiperSlide>
     );
+  };
+
+  const modalToggler = () => {
+    setShowLikeModal(true);
   };
 
   return (
@@ -251,7 +258,10 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         <p className="font-bold">محبوب ترین برند ها</p>
         <div className="flex justify-start md:justify-center mb-[70px] mt-4 overflow-y-hidden overflow-x-auto border border-[#F2F2F2] rounded-[10px] p-8">
           {data?.brands?.map((brand, index) => (
-            <div className="relative flex flex-col justify-between items-center text-center mx-8 " key={index}>
+            <div
+              className="relative flex flex-col justify-between items-center text-center mx-8 "
+              key={index}
+            >
               <div className="over-flow-x">
                 <Image
                   src={brand?.url}
@@ -308,6 +318,9 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           ))}
         </div>
       </div>
+      {showLikeModal && (
+        <Modal>modalddddddddddddddddddddddddddddddddddddddddddddddd</Modal>
+      )}
     </>
   );
 };
