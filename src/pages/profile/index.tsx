@@ -14,21 +14,21 @@ const Addresses: NextPageWithLayout<AddressesProps> = ({ data }) => {
       <div className="mb-[20px] font-medium">اطلاعات کاربری</div>
       <form>
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-6">
+          <div className="col-span-12 lg:col-span-6">
             <input
               type="text"
               placeholder="دکتر باقری"
               className="border w-full p-3 rounded-[7px]"
             />
           </div>
-          <div className="col-span-6">
+          <div className="col-span-12 lg:col-span-6">
             <input
               type="text"
               placeholder="09121238695"
               className="border w-full p-3 rounded-[7px]"
             />
           </div>
-          <div className="col-span-6 md:mt-3">
+          <div className="col-span-12 lg:col-span-6 md:mt-3">
             <input
               type="text"
               placeholder="parvizi.reza1993@gmail.com"
@@ -36,7 +36,7 @@ const Addresses: NextPageWithLayout<AddressesProps> = ({ data }) => {
             />
           </div>
           <div className="col-span-6"></div>
-          <div className="col-span-6 md:mt-3">
+          <div className="col-span-12 lg:col-span-6 md:mt-3">
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -51,14 +51,14 @@ const Addresses: NextPageWithLayout<AddressesProps> = ({ data }) => {
           <div className="col-span-12 mt-[45px] font-medium">
             تنظیمات امنیتی
           </div>
-          <div className="col-span-6">
+          <div className="col-span-12 lg:col-span-6">
             <input
               type="text"
               placeholder="گذر واژه فعلی"
               className="border w-full p-3 rounded-[7px]"
             />
           </div>
-          <div className="col-span-6">
+          <div className="col-span-12 lg:col-span-6">
             <input
               type="text"
               placeholder="گذر واژه جدید"
