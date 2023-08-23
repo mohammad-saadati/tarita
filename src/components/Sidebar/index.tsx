@@ -61,7 +61,7 @@ const Sidebar: FC<SidebarProps> = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col justify-center items-center border rounded pt-[60px] px-5 sticky top-5">
+    <div className="flex flex-col justify-center items-center border rounded lg:pt-[60px] mb-10 px-5 pt-6 lg:sticky lg:top-5">
       <Image
         src={avatar}
         width={90}
