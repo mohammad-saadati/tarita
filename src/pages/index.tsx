@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ReactElement, useState } from "react";
+import { ReactElement, useState, useEffect } from "react";
 import { NextPageWithLayout } from "./_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 //
@@ -72,6 +72,10 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       </SwiperSlide>
     );
   };
+
+  useEffect(() => {
+    document.querySelector("body")?.classList.toggle("lock-scroll", showLikeModal);
+  }, [showLikeModal]);
 
   const modalToggler = () => {
     setShowLikeModal(!showLikeModal);

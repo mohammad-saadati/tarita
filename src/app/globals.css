@@ -69,6 +69,9 @@ td {
   font-weight: 500;
   font-size: 14px;
 }
+.lock-scroll {
+  overflow: hidden;
+}
 /* .swiper-wrapper {
   transform: none!important;
 } */
