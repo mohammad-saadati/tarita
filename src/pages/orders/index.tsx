@@ -20,7 +20,9 @@ interface OrdersProps {
 const Orders: NextPageWithLayout<OrdersProps> = ({ data }) => {
   return (
     <>
-      <OrdersTable />
+      <div className="flex justify-between items-center mb-6 overflow-x-scroll">
+        <OrdersTable />
+      </div>
     </>
   );
 };
