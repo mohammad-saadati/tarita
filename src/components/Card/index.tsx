@@ -9,7 +9,7 @@ import heartFilled from "@/assets/images/heartFilled.svg";
 type CardProps = {
   item: { id: number; url: string; title: string; price: number; rate: number };
   isLiked?: boolean;
-  openLikeModal: () => void;
+  openLikeModal?: () => void;
 };
 const Card: FC<CardProps> = ({ item, isLiked, openLikeModal }) => {
   const [rating, setRating] = useState(2);
