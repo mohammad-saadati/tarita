@@ -19,14 +19,17 @@ interface OrdersProps {
   };
 }
 
-const Orders: NextPageWithLayout<OrdersProps> = ({ data }) => {
+const Orders: NextPageWithLayout<OrdersProps> = () => {
   const bookmarks = store.getState().currentUser.user.bookmarkeds;
-  console.log(bookmarks.length)
+  console.log(bookmarks.length);
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
         {bookmarks.map((item, index) => (
-          <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3" key={index}>
+          <div
+            className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3"
+            key={index}
+          >
             <Card item={item} isLiked={true} />
           </div>
         ))}
@@ -38,17 +41,17 @@ const Orders: NextPageWithLayout<OrdersProps> = ({ data }) => {
 Orders.getLayout = (page: ReactElement) =>
   identifier(page, LayoutTypes.dashboard);
 
-export async function getServerSideProps() {
-  try {
-    const res = await axios.get("/orders");
-    const { data } = res;
-    console.log("***ddddd*", data);
-    return { props: { data } };
-  } catch (error) {
-    console.log(error);
-  }
+// export async function getServerSideProps() {
+//   try {
+//     const res = await axios.get("/orders");
+//     const { data } = res;
+//     console.log("***ddddd*", data);
+//     return { props: { data } };
+//   } catch (error) {
+//     console.log(error);
+//   }
 
-  return { props: { data: {} } };
-}
+//   return { props: { data: {} } };
+// }
 
 export default Orders;
