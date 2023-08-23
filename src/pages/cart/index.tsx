@@ -23,8 +23,6 @@ const Cart: NextPageWithLayout<CartProps> = ({ data }) => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((store) => store.currentUser.user.cartItems);
   const addresses = useAppSelector((store) => store.currentUser.user.cartItems);
-  // const cartItems = store.getState().currentUser.user.cartItems;
-  // const addresses = store.getState().currentUser.user.addresses;
   const [paymentMethod, setPaymentMethod] = useState(0);
   const [shippingType, setShippingType] = useState(0);
   const [AddressNumber, setAddressNumber] = useState(0);
