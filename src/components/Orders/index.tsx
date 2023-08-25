@@ -9,7 +9,7 @@ type OrdersProps = {
 const Orders: FC<OrdersProps> = () => {
   return (
     <>
-      <table className="w-full rounded-lg">
+      <table className="lg:w-full rounded-lg">
         <thead className="bg-[#F2F2F2] rounded-lg">
           <tr className="p-1">
             <th className="text-right p-3">شماره سفارش</th>

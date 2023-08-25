@@ -21,7 +21,7 @@ const Dashboard: NextPageWithLayout<DashboardProps> = () => {
           <Link href="/orders">مشاهده همه</Link>
         </div>
       </div>
-      <div className="flex justify-between items-center mb-6 overflow-x-scroll">
+      <div className="flex justify-between items-center mb-6 overflow-x-auto">
         <Orders />
       </div>
       <div className="flex justify-between items-center mb-6 mt-16">
