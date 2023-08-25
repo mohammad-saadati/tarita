@@ -330,9 +330,11 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
             <div className="text-center">
               برای افزودن محصول به لیست علاقمندی ها ابتدا وارد شوید.
             </div>
-            <button className="bg-blue-700 text-white p-3 px-8 rounded mt-8 mx-auto">
-              <Link href="/login">ورورد</Link>
-            </button>
+            <div className="flex">
+              <button className="bg-blue-700 text-white p-2 px-6 rounded mt-8 mx-auto">
+                <Link href="/login">ورورد</Link>
+              </button>
+            </div>
           </>
         </Modal>
       )}
