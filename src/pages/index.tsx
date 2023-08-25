@@ -325,7 +325,7 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
         </div>
       </div>
       {showLikeModal && (
-        <Modal close={modalToggler}>
+        <Modal close={modalToggler} showClose={true}>
           <>
             <div className="text-center">
               برای افزودن محصول به لیست علاقمندی ها ابتدا وارد شوید.
