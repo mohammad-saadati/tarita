@@ -13,8 +13,13 @@ interface AddressesProps {
   data: {};
 }
 
-const Addresses: NextPageWithLayout<AddressesProps> = ({ data }) => {
-  const addresses = store.getState().currentUser.user.addresses;
+const Addresses: NextPageWithLayout<AddressesProps> = () => {
+  const addresses = store.getState().currentUser.user.addresses || [];
+
+  console.log(
+    "store.getState().currentUser.user.addresses",
+    store.getState().currentUser.user.addresses
+  );
 
   return (
     <>
@@ -25,38 +30,39 @@ const Addresses: NextPageWithLayout<AddressesProps> = ({ data }) => {
         </button>
       </div>
       <div className="grid grid-cols-12">
-        {addresses.map((address, index) => (
-          <div className="col-span-12 mt-10" key={index}>
-            <div className="border-[#F2F2F2] border-[2px] p-3.5 rounded-[7px]">
-              <div className="flex justify-between items-center">
-                <div className="font-bold text-sm">{address.name}</div>
-                {address.isActive ? (
-                  <Image src={starFilled} width={20} height={20} alt="" />
-                ) : (
-                  <Image src={starEmpty} width={20} height={20} alt="" />
-                )}
-              </div>
-              <div className="text-sm my-5">{address.location}</div>
-              <div className="flex justify-between items-center">
-                <div className="text-sm">{address.postalCode} کدپستی:</div>
-                <div className="flex items-center">
-                  <Image
-                    src={pencilRounded}
-                    width={34}
-                    height={34}
-                    alt="edit-address"
-                  />
-                  <Image
-                    src={deleteRounded}
-                    width={34}
-                    height={34}
-                    alt="remove-address"
-                  />
+        {addresses.length ?
+          addresses.map((address, index) => (
+            <div className="col-span-12 mt-10" key={index}>
+              <div className="border-[#F2F2F2] border-[2px] p-3.5 rounded-[7px]">
+                <div className="flex justify-between items-center">
+                  <div className="font-bold text-sm">{address.name}</div>
+                  {address.isActive ? (
+                    <Image src={starFilled} width={20} height={20} alt="" />
+                  ) : (
+                    <Image src={starEmpty} width={20} height={20} alt="" />
+                  )}
+                </div>
+                <div className="text-sm my-5">{address.location}</div>
+                <div className="flex justify-between items-center">
+                  <div className="text-sm">{address.postalCode} کدپستی:</div>
+                  <div className="flex items-center">
+                    <Image
+                      src={pencilRounded}
+                      width={34}
+                      height={34}
+                      alt="edit-address"
+                    />
+                    <Image
+                      src={deleteRounded}
+                      width={34}
+                      height={34}
+                      alt="remove-address"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          )) : ''}
       </div>
     </>
   );
