@@ -74,7 +74,9 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
   };
 
   useEffect(() => {
-    document.querySelector("body")?.classList.toggle("lock-scroll", showLikeModal);
+    document
+      .querySelector("body")
+      ?.classList.toggle("lock-scroll", showLikeModal);
   }, [showLikeModal]);
 
   const modalToggler = () => {
