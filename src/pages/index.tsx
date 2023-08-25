@@ -346,7 +346,6 @@ export async function getServerSideProps() {
   try {
     const res = await axios.get("/home");
     const { data } = res;
-    console.log("***ddddd*", data);
     return { props: { data } };
   } catch (error) {
     console.log(error);

@@ -88,7 +88,7 @@ const ProductDetail: FC<ProductDetailProps> = ({
           {colors.map((item, index) => (
             <div
               onClick={() => setActiveColorIndex(index)}
-              className="outline outline-1 outline-offset-4 w-[20px] h-[20px] rounded-[2px] mr-4"
+              className="outline outline-1 outline-offset-4 w-[20px] h-[20px] rounded-[2px] mr-4 cursor-pointer"
               style={{
                 backgroundColor: item,
                 outlineColor:

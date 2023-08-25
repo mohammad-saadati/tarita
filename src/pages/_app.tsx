@@ -72,7 +72,7 @@ MyApp.getInitialProps = async (
     const res = await axios.get("/currentUser");
     const { data } = res;
 
-    console.log("custom app ****", data);
+    // console.log("custom app ****", data);
 
     return { ...ctx, data: data };
   } catch (error) {

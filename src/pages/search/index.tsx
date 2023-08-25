@@ -27,8 +27,6 @@ const Search: NextPageWithLayout<SearchProps> = ({ products, filters }) => {
   const [loading, setLoading] = useState(false);
   const [isFirstLoading, setIsFirstLoading] = useState(true);
 
-  console.log(router.query);
-
   useEffect(() => {
     if (isFirstLoading) {
       setIsFirstLoading(false);

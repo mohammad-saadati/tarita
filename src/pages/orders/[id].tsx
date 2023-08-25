@@ -29,15 +29,6 @@ Orders.getLayout = (page: ReactElement) =>
   identifier(page, LayoutTypes.dashboard);
 
 export async function getServerSideProps() {
-  // try {
-  //   const res = await axios.get("/orders");
-  //   const { data } = res;
-  //   console.log("***ddddd*", data);
-  //   return { props: { data } };
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
   return { props: { data: {} } };
 }
 

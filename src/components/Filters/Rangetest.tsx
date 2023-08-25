@@ -47,7 +47,6 @@ const Range: FC<RangeProps> = () => {
     queryParams.set("min", min.toString());
     queryParams.set("max", max.toString());
 
-    console.log(queryParams);
     router.push({
       pathname: router.pathname,
       search: queryParams.toString(),

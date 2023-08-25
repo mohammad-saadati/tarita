@@ -21,7 +21,7 @@ interface OrdersProps {
 
 const Orders: NextPageWithLayout<OrdersProps> = () => {
   const bookmarks = store.getState().currentUser.user.bookmarkeds;
-  console.log(bookmarks.length);
+  
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
