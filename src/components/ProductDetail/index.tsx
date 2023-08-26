@@ -14,6 +14,7 @@ type ProductDetailProps = {
   colors: string[];
   sizes: { title: string; price: number }[];
   rate: number;
+  setShowLikeModal: (val: boolean) => void;
 };
 
 const ProductDetail: FC<ProductDetailProps> = ({
@@ -25,6 +26,7 @@ const ProductDetail: FC<ProductDetailProps> = ({
   rate,
   colors,
   sizes,
+  setShowLikeModal,
 }) => {
   const [activeColorIndex, setActiveColorIndex] = useState(0);
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
@@ -126,7 +128,9 @@ const ProductDetail: FC<ProductDetailProps> = ({
         </div>
       </div>
       <div className="flex justify-center items-center bg-[#333333] text-white rounded-[10px] mt-10 p-4 cursor-pointer">
-        <div className="text-sm ml-5">افزودن سبد خرید</div>
+        <div className="text-sm ml-5" onClick={() => setShowLikeModal(true)}>
+          افزودن سبد خرید
+        </div>
         <Image src={bag} alt="bag" />
       </div>
     </div>
