@@ -16,12 +16,19 @@ interface HomeProps {
   data: {
     banner: [];
     smallImg: { url: string; "mobile-url": string };
-    categories: { title: string; url: string }[];
+    categories: { title: string; url: string; link: string }[];
     popularProducts: [];
     festivals: { url: string }[];
     festivel2: { url: string }[];
     bigBanner: { url: string; mobileUrl: string };
-    brands: { title: string; url: string; width: number; height: number }[];
+    brands: {
+      title: string;
+      url: string;
+      width: number;
+      height: number;
+      brand: string;
+      link: string;
+    }[];
     posts: { url: string; title: string; description: string }[];
   };
 }
@@ -114,19 +121,24 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
       <div className="flex justify-center my-[70px] overflow-x-auto overflow-y-hidden">
         {data.categories &&
           data.categories.map(
-            (slide: { url: string; title: string }, index: number) => (
+            (
+              slide: { url: string; title: string; link: string },
+              index: number
+            ) => (
               <div
                 className="text-center mx-3 md:mx-6 cursor-pointer"
                 key={index}
               >
-                <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
-                  <div className="relative h-[40px] w-[40px]">
-                    <Image src={slide.url} fill={true} alt={slide.title} />
+                <Link href={slide.link}>
+                  <div className="border border-[#F2F2F2] rounded-[10px] p-2.5 inline-block">
+                    <div className="relative h-[40px] w-[40px]">
+                      <Image src={slide.url} fill={true} alt={slide.title} />
+                    </div>
                   </div>
-                </div>
-                <div className="text-[14px] whitespace-nowrap">
-                  {slide.title}
-                </div>
+                  <div className="text-[14px] whitespace-nowrap">
+                    {slide.title}
+                  </div>
+                </Link>
               </div>
             )
           )}
@@ -269,15 +281,17 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
               key={index}
             >
               <div className="over-flow-x">
-                <Image
-                  src={brand?.url}
-                  width={brand.width}
-                  height={brand.height}
-                  alt={brand.title}
-                />
+                <Link href={brand.link}>
+                  <Image
+                    src={brand?.url}
+                    width={brand.width}
+                    height={brand.height}
+                    alt={brand.title}
+                  />
+                </Link>
               </div>
               <div className="text-sm mt-2 whitespace-nowrap">
-                {brand.title}
+                <Link href={brand.link}>{brand.title}</Link>
               </div>
             </div>
           ))}
@@ -305,8 +319,10 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
                 />
               </div>
               <div className="py-3.5 mx-5">
-                <p className="text-sm font-bold">{post.title}</p>
-                <p className="text-xs text-[#828282] mt-4">
+                <p className="inline-block text-sm font-bold cursor-pointer">
+                  {post.title}
+                </p>
+                <p className="text-xs text-[#828282] mt-4 cursor-pointer">
                   {post.description}
                 </p>
               </div>

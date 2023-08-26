@@ -6,7 +6,7 @@ import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 
 interface PrivacyProps {}
 
-const Privacy: NextPageWithLayout<PrivacyProps> = ({ data }) => {
+const Privacy: NextPageWithLayout<PrivacyProps> = () => {
   return (
     <div>
       <div>
