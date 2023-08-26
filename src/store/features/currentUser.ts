@@ -9,6 +9,10 @@ export interface User {
   addresses: Address[];
   cartItems: CartItem[];
 }
+interface CartCount {
+  index: number;
+  value: number;
+}
 interface currentUserState {
   user: User;
 }
@@ -42,7 +46,7 @@ const initialState: currentUserState = {
     avatar: "",
     bookmarked: [],
     bookmarkeds: [],
-    addresses: [],
+    addresses: [] as Address[],
     cartItems: [],
   },
 };
@@ -54,7 +58,7 @@ const currentUser = createSlice({
     setCurrentUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
-    setCardItemCount: (state, action: PayloadAction<User>) => {
+    setCardItemCount: (state, action: PayloadAction<CartCount>) => {
       if (action.payload.value >= 1)
         state.user.cartItems[action.payload.index].count = action.payload.value;
     },
