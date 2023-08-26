@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { GetServerSidePropsContext } from "next";
-import type { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { NextPageWithLayout } from "../_app";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import ProductThumbSwiper from "@/components/ProductThumbSwiper";
@@ -11,6 +11,7 @@ import Slider from "@/components/Slider";
 import Card from "@/components/Card";
 import Ratings from "@/components/Ratings";
 import InfoTabs from "@/components/InfoTabs";
+import Modal from "@/components/Modal";
 import { SwiperSlide } from "swiper/react";
 import axios from "@/utils/axios";
 import garantiePrice from "@/assets/images/garantie-price.svg";
@@ -43,6 +44,7 @@ interface ProductProps {
 }
 
 const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
+  const [showLikeModal, setShowLikeModal] = useState(false);
   const renderCards = (
     slide: {
       id: number;
@@ -55,16 +57,20 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
   ) => {
     return (
       <SwiperSlide key={index} className="w-auto">
-        <Card item={slide} />
+        <Card item={slide} openLikeModal={modalToggler} />
       </SwiperSlide>
     );
+  };
+
+  const modalToggler = () => {
+    setShowLikeModal(!showLikeModal);
   };
 
   return (
     <div>
       <div className="grid grid-cols-12 gap-4 md:gap-16">
         <div className="col-span-12 md:col-span-7 relative">
-          <ProductMeta />
+          <ProductMeta setShowLikeModal={setShowLikeModal} />
           <ProductThumbSwiper
             images={data.mainImages}
             thumbs={data.thumbnails}
@@ -98,6 +104,7 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
             sizes={data.sizes}
             colors={data.colors}
             rate={data.rate}
+            setShowLikeModal={setShowLikeModal}
           />
         </div>
         <div className="col-span-12 md:col-span-12 mt-12">
@@ -156,6 +163,20 @@ const Product: NextPageWithLayout<ProductProps> = ({ data }) => {
           />
         </div>
       </div>
+      {showLikeModal && (
+        <Modal close={modalToggler} showClose={true}>
+          <>
+            <div className="text-center">
+              برای افزودن محصول به لیست علاقمندی ها ابتدا وارد شوید.
+            </div>
+            <div className="flex">
+              <button className="bg-blue-700 text-white p-2 px-6 rounded mt-8 mx-auto">
+                <Link href="/login">ورورد</Link>
+              </button>
+            </div>
+          </>
+        </Modal>
+      )}
     </div>
   );
 };
