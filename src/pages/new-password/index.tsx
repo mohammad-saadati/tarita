@@ -2,14 +2,27 @@ import Link from "next/link";
 import Image from "next/image";
 import { NextPageWithLayout } from "../_app";
 import { useState, ReactElement } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 import eye from "@/assets/images/eye.svg";
 import danger from "@/assets/images/danger.svg";
 
 interface NewPasswordProps {}
 
+type Inputs = {
+  email: string;
+};
+
 const NewPassword: NextPageWithLayout<NewPasswordProps> = () => {
   const [emailSent, setEmailSent] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
     <div className="w-[310px]">
@@ -32,7 +45,9 @@ const NewPassword: NextPageWithLayout<NewPasswordProps> = () => {
             />
             <div className="text-sm mr-2">مدت اعتبار لینک 1 ساعت است</div>
           </div>
-          <Link className="flex justify-center" href="/">بازگشت به فروشگاه</Link>
+          <Link className="flex justify-center" href="/">
+            بازگشت به فروشگاه
+          </Link>
         </div>
       ) : (
         <div>
@@ -42,12 +57,16 @@ const NewPassword: NextPageWithLayout<NewPasswordProps> = () => {
           <div className="text-center text-sm mb-8">
             کاربر گرامی لطفا رمز جدید را انتخاب کنید
           </div>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="relative">
               <input
                 className="border p-2 my-3 w-full rounded-[7px]"
                 placeholder="گذر واژه جدید"
+                {...register("email", { required: "ایمیل را وارد کنید" })}
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs">{errors.email.message}</p>
+              )}
               <Image
                 src={eye}
                 width={20}
