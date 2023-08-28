@@ -1,12 +1,28 @@
 import Link from "next/link";
 import { NextPageWithLayout } from "../_app";
 import { ReactElement } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import Map from "react-map-gl";
 import { identifier, LayoutTypes } from "@/components/layouts/layoutIdentifire";
 
 interface ContactUsProps {}
 
+type Inputs = {
+  username: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
 const ContactUs: NextPageWithLayout<ContactUsProps> = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
   return (
     <div>
       <div className="mb-20">
@@ -41,33 +57,53 @@ const ContactUs: NextPageWithLayout<ContactUsProps> = () => {
             کاربر گرامی لطفا پیش از ارسال پیام حتما به بخش سوالات متداول مراجعه
             کنید. درصورتیکه پاسخ انرا پیدا نکرده اید سوال خود را ارسال فرمایید.
           </div>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-12 gap-4">
               <div className="col-span-12 md:col-span-6">
                 <div>
                   <input
-                    className="p-2 border w-full rounded-[7px]"
+                    className="p-2 border w-full rounded-[7px] mb-2"
                     type="text"
                     placeholder="نام و نام خانوادگی"
+                    {...register("username", {
+                      required: "نام و نام خانوادگی را وارد کنید",
+                    })}
                   />
+                  {errors.username && (
+                    <p className="text-red-500 text-xs">
+                      {errors.username.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="col-span-12 md:col-span-6">
                 <div>
                   <input
-                    className="p-2 border w-full rounded-[7px]"
+                    className="p-2 border w-full rounded-[7px] mb-2"
                     type="text"
                     placeholder="ایمیل"
+                    {...register("email", { required: "ایمیل را وارد کنید" })}
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-xs">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="col-span-12">
                 <div>
                   <input
-                    className="p-2 border w-full rounded-[7px]"
+                    className="p-2 border w-full rounded-[7px] mb-2"
                     type="text"
                     placeholder="موضوع"
+                    {...register("subject", { required: "موضوع را وارد کنید" })}
                   />
+                  {errors.subject && (
+                    <p className="text-red-500 text-xs">
+                      {errors.subject.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="col-span-12">
@@ -76,7 +112,15 @@ const ContactUs: NextPageWithLayout<ContactUsProps> = () => {
                     className="p-2 border w-full rounded-[7px]"
                     placeholder="متن پیام"
                     rows={8}
+                    {...register("message", {
+                      required: "متن پیام را وارد کنید",
+                    })}
                   />
+                  {errors.message && (
+                    <p className="text-red-500 text-xs">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
