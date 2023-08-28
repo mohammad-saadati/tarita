@@ -37,7 +37,7 @@ const Cart: NextPageWithLayout<CartProps> = ({ data }) => {
         <div className="col-span-12 md:col-span-8 mb-10">
           <div className="grid grid-cols-12">
             {cartItems.map((item, index) => (
-              <div className="col-span-12 md:col-span-12 mb-10">
+              <div className="col-span-12 md:col-span-12 mb-10" key={index}>
                 <div className="border rounded-[10px] py-5 px-2.5">
                   <div className="flex items-center">
                     <Image

@@ -18,7 +18,10 @@ const Comments: FC<CommentsProps> = ({ comments }) => {
   return (
     <div>
       {comments.map((item, index) => (
-        <div className="flex flex-col border-b border-[#F2F2F2] pb-4 mb-4">
+        <div
+          className="flex flex-col border-b border-[#F2F2F2] pb-4 mb-4"
+          key={index}
+        >
           <div className="text-sm font-medium">{item.writer}</div>
           <div className="text-xs text-[#828282] mb-3.5">{item.date}</div>
           <div className="text-sm">{item.text}</div>

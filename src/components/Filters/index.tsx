@@ -85,6 +85,7 @@ const Filters: FC<FiltersProps> = ({ filters, title, children }) => {
                 className={`flex justify-between items-center px-[15px] pb-[15px] ${
                   index === 0 ? "pt-[15px] border-t" : ""
                 }`}
+                key={index}
               >
                 <div className="text-[13px]">{item.title}</div>
                 <div
