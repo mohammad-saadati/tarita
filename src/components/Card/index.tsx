@@ -27,19 +27,24 @@ const Card: FC<CardProps> = ({ item, isLiked, openLikeModal }) => {
           <Image
             src={item.url}
             alt={item.title}
-            className="w-[160px] h-[150px]"
+            className="w-[160px] h-[150px] object-cover"
             width={160}
             height={150}
           />
         </div>
         <div className="mt-[30px] text-[13px] font-medium">
-          <Link href={`/product/${item.id}/`}>{item.title}</Link>
+          <Link
+            className="inline-block whitespace-nowrap text-ellipsis w-44 overflow-hidden"
+            href={`/product/${item.id}/`}
+          >
+            {item.title}
+          </Link>
         </div>
         <div className="my-2">
           <Rating
             className="max-w-[65px]"
             onChange={setRating}
-            value={rating}
+            value={item.rate}
             readOnly
             itemStyles={{
               itemShapes: RoundedStar,
