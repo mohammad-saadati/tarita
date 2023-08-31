@@ -53,7 +53,8 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
               <div className="text-xl mb-10">توضیحات عنوان</div>
               <a
                 className="bg-rose-900 text-center rounded p-3 w-[10rem] cursor-pointer"
-                href="#"
+                href="https://cafebazaar.ir/app"
+                target="_blank"
               >
                 دانلود اپلیکیشن
               </a>
@@ -102,20 +103,22 @@ const Home: NextPageWithLayout<HomeProps> = ({ data }) => {
           />
         </div>
         <div className="col-span-12 md:col-span-3 lg:col-span-2 relative h-[300px]">
-          <Image
-            priority={true}
-            src={data.smallImg?.url}
-            fill={true}
-            alt=""
-            className="hidden md:block rounded-[10px]"
-          />
-          <Image
-            priority={true}
-            src={data.smallImg ? data.smallImg["mobile-url"] : ""}
-            fill={true}
-            alt=""
-            className="block md:hidden rounded-[10px]"
-          />
+          <a href="https://cafebazaar.ir/app" target="_blank">
+            <Image
+              priority={true}
+              src={data.smallImg?.url}
+              fill={true}
+              alt=""
+              className="hidden md:block rounded-[10px]"
+            />
+            <Image
+              priority={true}
+              src={data.smallImg ? data.smallImg["mobile-url"] : ""}
+              fill={true}
+              alt=""
+              className="block md:hidden rounded-[10px]"
+            />
+          </a>
         </div>
       </div>
       <div className="flex justify-center my-[70px] overflow-x-auto overflow-y-hidden">
